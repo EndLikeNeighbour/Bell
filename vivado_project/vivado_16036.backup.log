@@ -1,0 +1,207 @@
+#-----------------------------------------------------------
+# Vivado v2018.1 (64-bit)
+# SW Build 2188600 on Wed Apr  4 18:40:38 MDT 2018
+# IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
+# Start of session at: Mon Nov  2 00:08:22 2026
+# Process ID: 16036
+# Current directory: E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent512 E:\Project\ModelsimProject\Êý×ÖÖÓ\vivado_project\digital_clock.xpr
+# Log file: E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/vivado.log
+# Journal file: E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'F:/ProgramFiles/Xilinx/Vivado/2018.1/data/ip'.
+open_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 805.902 ; gain = 96.047
+update_compile_order -fileset sources_1
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_digital_clock' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj tb_digital_clock_vlog.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.1
+Copyright 1986-1999, 2001-2017 Xilinx, Inc. All Rights Reserved.
+Running: F:/ProgramFiles/Xilinx/Vivado/2018.1/bin/unwrapped/win64.o/xelab.exe -wto 5ac0dce081da44d3af27de675b445fba --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_digital_clock_behav xil_defaultlib.tb_digital_clock xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_digital_clock_behav -key {Behavioral:sim_1:Functional:tb_digital_clock} -tclbatch {tb_digital_clock.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.1
+Time resolution is 1 ps
+source tb_digital_clock.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+==== digital_clock self-test begin ====
+PASS time 00:00:00
+FAIL time got 0:0:0 expected 23:0:0
+PASS time 00:00:00
+FAIL time got 0:0:0 expected 1:0:0
+PASS time 00:00:00
+FAIL time got 0:0:0 expected 0:59:0
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_digital_clock_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:06 ; elapsed = 00:00:10 . Memory (MB): peak = 881.906 ; gain = 22.859
+set_property target_simulator ModelSim [current_project]
+set_property compxlib.modelsim_compiled_library_dir {} [current_project]
+set_property compxlib.modelsim_compiled_library_dir {} [current_project]
+set_property compxlib.modelsim_compiled_library_dir {} [current_project]
+set_property ip.user_files_dir E:/Project/ModelsimProject/vivado_project/digital_clock.ip_user_files [current_project]
+update_ip_catalog
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.sim/sim_1/behav/modelsim'
+INFO: [USF-ModelSim-47] Finding simulator installation...
+INFO: [USF-ModelSim-49] Using simulator executables from 'F:\ProgramFiles\Modelsim\win64pe'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-modelsim-7] Finding pre-compiled libraries...
+INFO: [USF-modelsim-11] File 'F:/ProgramFiles/Xilinx/Xilib/modelsim.ini' copied to run dir:'E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.sim/sim_1/behav/modelsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_digital_clock' in fileset 'sim_1'...
+INFO: [USF-ModelSim-107] Finding global include files...
+INFO: [USF-ModelSim-108] Finding include directories and verilog header directory paths...
+INFO: [USF-ModelSim-109] Fetching design files from 'sim_1'...
+INFO: [USF-ModelSim-2] ModelSim::Compile design
+INFO: [USF-ModelSim-15] Creating automatic 'do' files...
+INFO: [USF-ModelSim-69] Executing 'COMPILE and ANALYZE' step in 'E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.sim/sim_1/behav/modelsim'
+Reading F:/ProgramFiles/Modelsim/tcl/vsim/pref.tcl
+
+# 10.6c
+
+# do {tb_digital_clock_compile.do}
+# Model Technology ModelSim DE-64 vmap 10.6c Lib Mapping Utility 2017.07 Jul 26 2017
+# vmap xil_defaultlib modelsim_lib/msim/xil_defaultlib 
+# Modifying F:\ProgramFiles\Xilinx\Xilib\modelsim.ini
+# ** Warning: (vlog-159) Mode option -64 is not supported in this context and will be ignored.
+# Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+# Start time: 00:12:55 on Nov 02,2026
+# vlog -64 -incr -work xil_defaultlib ../../../../../rtl/digital_clock.v ../../../../../sim/tb_digital_clock.v 
+# init_dbinfo() DATABASE ERROR: (sqlite3_open E:/Project/ModelsimProject/??¡Á???/vivado_project/digital_clock.sim/sim_1/behav/modelsim/modelsim_lib/msim/xil_defaultlib/_lib.qdb): unable to open database file
+# mtilibWrite(): INTERNAL ERROR: Unexpected null object encountered
+# ** Fatal: (vlog-9) Problem while writing token file "E:/Project/ModelsimProject/??¡Á???/vivado_project/digital_clock.sim/sim_1/behav/modelsim/modelsim_lib/msim/xil_defaultlib/_temp/vlog58weg9".
+# ** Error: ../../../../../rtl/digital_clock.v(7): Verilog Compiler exiting
+# End time: 00:12:55 on Nov 02,2026, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 1
+# ** Error: F:/ProgramFiles/Modelsim/win64pe/vlog failed.
+# Error in macro ./tb_digital_clock_compile.do line 19
+# F:/ProgramFiles/Modelsim/win64pe/vlog failed.
+#     while executing
+# "vlog -64 -incr -work xil_defaultlib  \
+# "../../../../../rtl/digital_clock.v" \
+# "../../../../../sim/tb_digital_clock.v" \
+# "
+ModelSim> INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+run_program: Time (s): cpu = 00:00:03 ; elapsed = 00:01:38 . Memory (MB): peak = 885.336 ; gain = 0.000
+INFO: [Common 17-344] 'run_program' was cancelled
+INFO: [Vivado 12-5357] 'compile' step aborted
+launch_simulation: Time (s): cpu = 00:00:03 ; elapsed = 00:01:38 . Memory (MB): peak = 885.336 ; gain = 0.000
+INFO: [Common 17-344] 'launch_simulation' was cancelled
+set_property compxlib.modelsim_compiled_library_dir E:/Project/ModelsimProject/vivado_project/digital_clock.cache/compile_simlib/modelsim [current_project]
+update_ip_catalog
+update_ip_catalog
+launch_simulation -install_path F:/ProgramFiles/Modelsim/win64pe
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.sim/sim_1/behav/modelsim'
+INFO: [USF-ModelSim-47] Finding simulator installation...
+INFO: [USF-ModelSim-50] Using simulator executables from 'F:/ProgramFiles/Modelsim/win64pe/vsim.exe'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-modelsim-7] Finding pre-compiled libraries...
+INFO: [USF-modelsim-11] File 'F:/ProgramFiles/Xilinx/Xilib/modelsim.ini' copied to run dir:'E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.sim/sim_1/behav/modelsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_digital_clock' in fileset 'sim_1'...
+INFO: [USF-ModelSim-107] Finding global include files...
+INFO: [USF-ModelSim-108] Finding include directories and verilog header directory paths...
+INFO: [USF-ModelSim-109] Fetching design files from 'sim_1'...
+INFO: [USF-ModelSim-2] ModelSim::Compile design
+INFO: [USF-ModelSim-15] Creating automatic 'do' files...
+INFO: [USF-ModelSim-69] Executing 'COMPILE and ANALYZE' step in 'E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.sim/sim_1/behav/modelsim'
+Reading F:/ProgramFiles/Modelsim/tcl/vsim/pref.tcl
+
+# 10.6c
+
+# do {tb_digital_clock_compile.do}
+# ** Warning: (vlib-34) Library already exists at "modelsim_lib/work".
+# ** Warning: (vlib-34) Library already exists at "modelsim_lib/msim".
+# ** Warning: (vlib-34) Library already exists at "modelsim_lib/msim/xil_defaultlib".
+# Model Technology ModelSim DE-64 vmap 10.6c Lib Mapping Utility 2017.07 Jul 26 2017
+# vmap xil_defaultlib modelsim_lib/msim/xil_defaultlib 
+# Modifying F:\ProgramFiles\Xilinx\Xilib\modelsim.ini
+# ** Warning: (vlog-159) Mode option -64 is not supported in this context and will be ignored.
+# Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+# Start time: 00:19:08 on Nov 02,2026
+# vlog -64 -incr -work xil_defaultlib ../../../../../rtl/digital_clock.v ../../../../../sim/tb_digital_clock.v 
+# init_dbinfo() DATABASE ERROR: (sqlite3_open E:/Project/ModelsimProject/??¡Á???/vivado_project/digital_clock.sim/sim_1/behav/modelsim/modelsim_lib/msim/xil_defaultlib/_lib.qdb): unable to open database file
+# mtilibWrite(): INTERNAL ERROR: Unexpected null object encountered
+# ** Fatal: (vlog-9) Problem while writing token file "E:/Project/ModelsimProject/??¡Á???/vivado_project/digital_clock.sim/sim_1/behav/modelsim/modelsim_lib/msim/xil_defaultlib/_temp/vlogct0d6n".
+# ** Error: ../../../../../rtl/digital_clock.v(7): Verilog Compiler exiting
+# End time: 00:19:08 on Nov 02,2026, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 1
+# sqlite3_open_v2: No such file or directory
+# Error in macro ./tb_digital_clock_compile.do line 19
+# ** Warning: (vlog-159) Mode option -64 is not supported in this context and will be ignored.
+# Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+# Start time: 00:19:08 on Nov 02,2026
+# vlog -64 -incr -work xil_defaultlib ../../../../../rtl/digital_clock.v ../../../../../sim/tb_digital_clock.v 
+# init_dbinfo() DATABASE ERROR: (sqlite3_open E:/Project/ModelsimProject/??¡Á???/vivado_project/digital_clock.sim/sim_1/behav/modelsim/modelsim_lib/msim/xil_defaultlib/_lib.qdb): unable to open database file
+# mtilibWrite(): INTERNAL ERROR: Unexpected null object encountered
+# ** Fatal: (vlog-9) Problem while writing token file "E:/Project/ModelsimProject/??¡Á???/vivado_project/digital_clock.sim/sim_1/behav/modelsim/modelsim_lib/msim/xil_defaultlib/_temp/vlogct0d6n".
+# ** Error: ../../../../../rtl/digital_clock.v(7): Verilog Compiler exiting
+# End time: 00:19:08 on Nov 02,2026, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 1
+# sqlite3_open_v2: No such file or directory
+#     while executing
+# "exec <nul: {F:\ProgramFiles\Modelsim\win64pe\vlog.EXE} -64 -incr -work xil_defaultlib ../../../../../rtl/digital_clock.v ../../../../../sim/tb_digital..."
+#     ("uplevel" body line 1)
+#     invoked from within
+# "uplevel 1 exec $redir $new [lrange $args 1 end]"
+#     (procedure "::unknown" line 47)
+#     invoked from within
+# "F:\\ProgramFiles\\Modelsim\\win64pe\\vlog -64 -incr -work xil_defaultlib  \
+# "../../../../../rtl/digital_clock.v" \
+# "../../../../../sim/tb_digital_cloc..."
+ModelSim> INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+run_program: Time (s): cpu = 00:00:02 ; elapsed = 00:01:30 . Memory (MB): peak = 943.238 ; gain = 0.098
+INFO: [Common 17-344] 'run_program' was cancelled
+INFO: [Vivado 12-5357] 'compile' step aborted
+launch_simulation: Time (s): cpu = 00:00:02 ; elapsed = 00:01:30 . Memory (MB): peak = 943.238 ; gain = 1.289
+INFO: [Common 17-344] 'launch_simulation' was cancelled
+close_project
+open_project E:/Project/VivadoProject/Bin2DH_20260930/Bin2DH_20260930.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'F:/ProgramFiles/Xilinx/Vivado/2018.1/data/ip'.
+update_compile_order -fileset sources_1
+close_project
+open_project E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'F:/ProgramFiles/Xilinx/Vivado/2018.1/data/ip'.
+update_compile_order -fileset sources_1
+set_property compxlib.modelsim_compiled_library_dir F:/ProgramFiles/Xilinx/Xilib [current_project]
+update_ip_catalog

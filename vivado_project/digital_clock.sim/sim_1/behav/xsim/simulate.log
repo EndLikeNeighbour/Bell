@@ -1,0 +1,9 @@
+Vivado Simulator 2018.1
+Time resolution is 1 ps
+==== digital_clock self-test begin ====
+PASS time 00:00:00
+FAIL time got 0:0:0 expected 23:0:0
+PASS time 00:00:00
+FAIL time got 0:0:0 expected 1:0:0
+PASS time 00:00:00
+FAIL time got 0:0:0 expected 0:59:0

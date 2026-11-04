@@ -1,0 +1,36 @@
+#-----------------------------------------------------------
+# Vivado v2018.1 (64-bit)
+# SW Build 2188600 on Wed Apr  4 18:40:38 MDT 2018
+# IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
+# Start of session at: Mon Nov  2 00:08:22 2026
+# Process ID: 16036
+# Current directory: E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent512 E:\Project\ModelsimProject\Êý×ÖÖÓ\vivado_project\digital_clock.xpr
+# Log file: E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/vivado.log
+# Journal file: E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source tb_digital_clock.tcl
+set_property target_simulator ModelSim [current_project]
+set_property compxlib.modelsim_compiled_library_dir {} [current_project]
+set_property compxlib.modelsim_compiled_library_dir {} [current_project]
+set_property compxlib.modelsim_compiled_library_dir {} [current_project]
+set_property ip.user_files_dir E:/Project/ModelsimProject/vivado_project/digital_clock.ip_user_files [current_project]
+update_ip_catalog
+close_sim
+launch_simulation
+set_property compxlib.modelsim_compiled_library_dir E:/Project/ModelsimProject/vivado_project/digital_clock.cache/compile_simlib/modelsim [current_project]
+update_ip_catalog
+update_ip_catalog
+launch_simulation -install_path F:/ProgramFiles/Modelsim/win64pe
+close_project
+open_project E:/Project/VivadoProject/Bin2DH_20260930/Bin2DH_20260930.xpr
+update_compile_order -fileset sources_1
+close_project
+open_project E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.xpr
+update_compile_order -fileset sources_1
+set_property compxlib.modelsim_compiled_library_dir F:/ProgramFiles/Xilinx/Xilib [current_project]
+update_ip_catalog

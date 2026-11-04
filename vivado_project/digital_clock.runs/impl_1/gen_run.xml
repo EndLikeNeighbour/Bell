@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1793639675">
+  <File Type="PWROPT-DCP" Name="digital_clock_pwropt.dcp"/>
+  <File Type="ROUTE-PWR" Name="digital_clock_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="digital_clock.tcl"/>
+  <File Type="ROUTE-PWR-SUM" Name="digital_clock_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="digital_clock_reports.tcl"/>
+  <File Type="BG-DRC" Name="digital_clock.drc"/>
+  <File Type="OPT-DCP" Name="digital_clock_opt.dcp"/>
+  <File Type="OPT-HWDEF" Name="digital_clock.hwdef"/>
+  <File Type="OPT-DRC" Name="digital_clock_drc_opted.rpt"/>
+  <File Type="PLACE-DCP" Name="digital_clock_placed.dcp"/>
+  <File Type="PLACE-IO" Name="digital_clock_io_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="digital_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="digital_clock_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="digital_clock_control_sets_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="digital_clock_incremental_reuse_pre_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="digital_clock_postplace_pwropt.dcp"/>
+  <File Type="PHYSOPT-DCP" Name="digital_clock_physopt.dcp"/>
+  <File Type="BG-BIT" Name="digital_clock.bit"/>
+  <File Type="ROUTE-ERROR-DCP" Name="digital_clock_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="digital_clock_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="digital_clock_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="digital_clock_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="digital_clock_drc_routed.pb"/>
+  <File Type="BITSTR-MSK" Name="digital_clock.msk"/>
+  <File Type="ROUTE-DRC-RPX" Name="digital_clock_drc_routed.rpx"/>
+  <File Type="BG-BGN" Name="digital_clock.bgn"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="digital_clock_methodology_drc_routed.rpt"/>
+  <File Type="BITSTR-RBT" Name="digital_clock.rbt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="digital_clock_methodology_drc_routed.rpx"/>
+  <File Type="BG-BIN" Name="digital_clock.bin"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="digital_clock_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="digital_clock_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="digital_clock_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="digital_clock_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="digital_clock_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="digital_clock_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="digital_clock_timing_summary_routed.rpx"/>
+  <File Type="RDI-RDI" Name="digital_clock.vdi"/>
+  <File Type="ROUTE-CLK" Name="digital_clock_clock_utilization_routed.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="digital_clock_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="digital_clock_postroute_physopt_bb.dcp"/>
+  <File Type="BITSTR-NKY" Name="digital_clock.nky"/>
+  <File Type="BITSTR-BMM" Name="digital_clock_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="digital_clock.mmi"/>
+  <File Type="BITSTR-LTX" Name="digital_clock.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="digital_clock.sysdef"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../rtl/digital_clock.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/design_1/design_1.bd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="digital_clock"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PPRDIR/../constraints/basys3_clock.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream">
+      <Option Id="BinFile">1</Option>
+    </Step>
+  </Strategy>
+</GenRun>

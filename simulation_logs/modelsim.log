@@ -1,0 +1,85 @@
+# vlog -work work rtl/digital_clock.v sim/tb_digital_clock.v
+# Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+# Start time: 09:43:17 on Nov 03,2026
+# vlog -work work rtl/digital_clock.v sim/tb_digital_clock.v 
+# -- Compiling module digital_clock
+# -- Compiling module tb_digital_clock
+# 
+# Top level modules:
+# 	tb_digital_clock
+# End time: 09:43:17 on Nov 03,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -onfinish stop work.tb_digital_clock
+# vsim -onfinish stop work.tb_digital_clock 
+# Start time: 09:43:18 on Nov 03,2026
+# //  ModelSim DE-64 10.6c Jul 26 2017
+# //
+# //  Copyright 1991-2017 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE-64 and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading work.tb_digital_clock
+# Loading work.digital_clock
+# run -all
+# ==== digital_clock self-test begin ====
+# PASS time  0: 0: 0
+# PASS DP digit 0: an=1110 DP=1
+# PASS DP digit 1: an=1101 DP=1
+# PASS DP digit 2: an=1011 DP=0
+# PASS DP digit 3: an=0111 DP=1
+# PASS DP digit 1: an=1101 DP=1
+# PASS DP digit 2: an=1011 DP=1
+# PASS time 12:34: 0
+# PASS setting/page LEDs
+# PASS manual right page selection
+# PASS DP digit 0: an=1110 DP=0
+# PASS DP digit 1: an=1101 DP=1
+# PASS DP digit 2: an=1011 DP=0
+# PASS DP digit 3: an=0111 DP=1
+# PASS auto-cycle start at HH:MM
+# PASS manual selection held during auto mode
+# PASS auto timer pauses in setting mode
+# PASS HH:MM dwell before 5 s
+# PASS auto switch HH:MM -> MM:SS at 5 s
+# PASS MM:SS dwell before 3 s
+# PASS auto switch MM:SS -> HH:MM at 3 s
+# PASS manual page restore after SW2 off
+# PASS manual left page selection after auto mode
+# PASS time  0: 0: 0
+# PASS time 23: 0: 0
+# PASS time  0: 0: 0
+# PASS time  1: 0: 0
+# PASS time  0: 0: 0
+# PASS time  0:59: 0
+# PASS time  0: 0: 0
+# PASS time  0: 1: 0
+# PASS time  0: 0: 0
+# PASS time  0:59: 0
+# PASS time  0:59: 0
+# PASS time  0: 1: 0
+# PASS time  1: 0: 0
+# PASS time  0: 0: 0
+# ----------------------------------------
+# ALL TESTS PASSED (37 checks)
+# ** Note: $finish    : sim/tb_digital_clock.v(358)
+#    Time: 3526 ns  Iteration: 0  Instance: /tb_digital_clock
+# Break in Module tb_digital_clock at sim/tb_digital_clock.v line 358
+# Stopped at sim/tb_digital_clock.v line 358
+# set error_count [examine -radix decimal sim:/tb_digital_clock/errors]
+# 0
+# if {$error_count != 0} {
+#     puts "MODELSIM RESULT: FAIL ($error_count errors)"
+#     quit -code 1
+# } else {
+#     puts "MODELSIM RESULT: PASS"
+#     quit -code 0
+# }
+# End time: 09:43:18 on Nov 03,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

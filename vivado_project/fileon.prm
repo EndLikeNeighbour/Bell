@@ -1,0 +1,14 @@
+===================================
+Configuration Memory information
+===================================
+File Format        MCS
+Interface          BPIX16
+Size               128M
+Start Address      0x00000000
+End Address        0x07FFFFFF
+Checksum           0xD6B7FA50
+Fill Value         0xFF
+
+Addr1         Addr2         Date                    File(s)                                                                                       Checksum
+0x00000000    0x0021728B    Nov  3 09:14:58 2026    E:/Project/ModelsimProject/Bell/vivado_project/digital_clock.runs/impl_1/digital_clock.bit    0x000913C4
+File Checksum Total                                                                                                                               0x000913C4

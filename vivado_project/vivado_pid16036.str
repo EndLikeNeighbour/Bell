@@ -1,0 +1,486 @@
+/*
+
+Xilinx Vivado v2018.1 (64-bit) [Major: 2018, Minor: 1]
+SW Build: 2188600 on Wed Apr  4 18:40:38 MDT 2018
+IP Build: 2185939 on Wed Apr  4 20:55:05 MDT 2018
+
+Process ID: 16036
+License: Customer
+
+Current time: 	Mon Nov 02 00:09:20 CST 2026
+Time zone: 	China Standard Time (Asia/Shanghai)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 20
+
+Screen size: 1440x900
+Screen resolution (DPI): 96
+Available screens: 1
+Available disk space: 11 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	1.8.0_112 64-bit
+Java home: 	F:/ProgramFiles/Xilinx/Vivado/2018.1/tps/win64/jre
+Java executable location: 	F:/ProgramFiles/Xilinx/Vivado/2018.1/tps/win64/jre/bin/java.exe
+Java initial memory (-Xms): 	128 MB
+Java maximum memory (-Xmx):	 2 GB
+
+
+User name: 	CaoXiang
+User home directory: C:/Users/CaoXiang
+User working directory: E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project
+User country: 	CN
+User language: 	zh
+User locale: 	zh_CN
+
+RDI_BASEROOT: F:/ProgramFiles/Xilinx/Vivado
+HDI_APPROOT: F:/ProgramFiles/Xilinx/Vivado/2018.1
+RDI_DATADIR: F:/ProgramFiles/Xilinx/Vivado/2018.1/data
+RDI_BINDIR: F:/ProgramFiles/Xilinx/Vivado/2018.1/bin
+
+Vivado preferences file location: C:/Users/CaoXiang/AppData/Roaming/Xilinx/Vivado/2018.1/vivado.xml
+Vivado preferences directory: C:/Users/CaoXiang/AppData/Roaming/Xilinx/Vivado/2018.1/
+Vivado layouts directory: C:/Users/CaoXiang/AppData/Roaming/Xilinx/Vivado/2018.1/layouts
+PlanAhead jar file location: 	F:/ProgramFiles/Xilinx/Vivado/2018.1/lib/classes/planAhead.jar
+Vivado log file location: 	E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/vivado.log
+Vivado journal file location: 	E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/vivado.jou
+Engine tmp dir: 	E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/.Xil/Vivado-16036-EndsLikeNeighbours
+
+GUI allocated memory:	133 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 592 MB
+
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// [GUI Memory]: 48 MB (+47398kb) [00:00:16]
+// [Engine Memory]: 518 MB (+391346kb) [00:00:16]
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// [GUI Memory]: 57 MB (+7889kb) [00:00:16]
+// bv (ch):  Open Project : addNotify
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// Tcl Message: open_project E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.xpr 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_NEW
+// Tcl Message: open_project E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified 
+// [GUI Memory]: 68 MB (+8289kb) [00:00:20]
+// [Engine Memory]: 598 MB (+56612kb) [00:00:20]
+// Tcl Message: INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'F:/ProgramFiles/Xilinx/Vivado/2018.1/data/ip'. 
+// HMemoryUtils.trashcanNow. Engine heap size: 613 MB. GUI used memory: 33 MB. Current time: 11/2/26 12:09:22 AM CST
+// TclEventType: PROJECT_NEW
+// [Engine Memory]: 656 MB (+29612kb) [00:00:22]
+// Project name: digital_clock; location: E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project; part: xc7a35tcpg236-1
+// [Engine Memory]: 693 MB (+4851kb) [00:00:25]
+// Tcl Message: open_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 805.902 ; gain = 96.047 
+dismissDialog("Open Project"); // bv (ch)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Tcl Message: update_compile_order -fileset sources_1 
+// Elapsed time: 22 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Settings]", 1, false); // u (O, ch)
+// Run Command: RDIResourceCommand.RDICommands_SETTINGS
+// Tcl Command: 'rdi::info_commands {device::*}'
+// Tcl Command: 'rdi::info_commands {debug::*}'
+// Tcl Command: 'rdi::info_commands {*}'
+// C (ch): Settings: addNotify
+// [GUI Memory]: 72 MB (+561kb) [00:00:49]
+dismissDialog("Settings"); // C (ch)
+// HMemoryUtils.trashcanNow. Engine heap size: 717 MB. GUI used memory: 49 MB. Current time: 11/2/26 12:09:52 AM CST
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints]", 2); // B (D, ch)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources]", 5); // B (D, ch)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation, Run Simulation]", 10, false); // u (O, ch)
+selectMenuItem(PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL, "Run Behavioral Simulation"); // ac (ai, ch)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL
+// e (ch):  Run Simulation : addNotify
+// TclEventType: LAUNCH_SIM
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Message: launch_simulation 
+// Tcl Message: INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.sim/sim_1/behav/xsim' INFO: [SIM-utils-51] Simulation object is 'sim_1' INFO: [SIM-utils-54] Inspecting design source files for 'tb_digital_clock' in fileset 'sim_1'... INFO: [USF-XSim-97] Finding global include files... INFO: [USF-XSim-98] Fetching design files from 'sim_1'... INFO: [USF-XSim-2] XSim::Compile design INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.sim/sim_1/behav/xsim' 
+// Tcl Message: "xvlog --incr --relax -prj tb_digital_clock_vlog.prj" 
+// TclEventType: LAUNCH_SIM_LOG
+// Tcl Message: INFO: [USF-XSim-69] 'compile' step finished in '2' seconds INFO: [USF-XSim-3] XSim::Elaborate design INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.sim/sim_1/behav/xsim' 
+// TclEventType: LAUNCH_SIM
+// TclEventType: LOAD_FEATURE
+// Tcl Message: Vivado Simulator 2018.1 Copyright 1986-1999, 2001-2017 Xilinx, Inc. All Rights Reserved. Running: F:/ProgramFiles/Xilinx/Vivado/2018.1/bin/unwrapped/win64.o/xelab.exe -wto 5ac0dce081da44d3af27de675b445fba --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_digital_clock_behav xil_defaultlib.tb_digital_clock xil_defaultlib.glbl -log elaborate.log  Using 2 slave threads. Starting static elaboration Completed static elaboration INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel 
+// Tcl Message: INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds INFO: [USF-XSim-4] XSim::Simulate design INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.sim/sim_1/behav/xsim' INFO: [USF-XSim-98] *** Running xsim 
+// Tcl Message:    with args "tb_digital_clock_behav -key {Behavioral:sim_1:Functional:tb_digital_clock} -tclbatch {tb_digital_clock.tcl} -log {simulate.log}" 
+// Tcl Message: INFO: [USF-XSim-8] Loading simulator feature 
+// Tcl Message: Vivado Simulator 2018.1 
+// TclEventType: SIMULATION_CREATE_SIMULATION_OBJECT
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// Tcl Message: Time resolution is 1 ps 
+// [GUI Memory]: 77 MB (+1025kb) [00:01:14]
+// [Engine Memory]: 739 MB (+11645kb) [00:01:14]
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// TclEventType: WAVEFORM_OPEN_WCFG
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: WAVEFORM_OPEN_WCFG
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// Waveform: addNotify
+// TclEventType: WAVEFORM_MODEL_EVENT
+// Tcl Message: source tb_digital_clock.tcl 
+// Tcl Message: # set curr_wave [current_wave_config] # if { [string length $curr_wave] == 0 } { #   if { [llength [get_objects]] > 0} { #     add_wave / #     set_property needs_save false [current_wave_config] #   } else { #      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console." #   } # } 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_MODEL_EVENT
+// HMemoryUtils.trashcanNow. Engine heap size: 741 MB. GUI used memory: 55 MB. Current time: 11/2/26 12:10:16 AM CST
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// TclEventType: SIMULATION_CLEAR_CURRENT_LINE
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: SIMULATION_OBJECT_TREE_RESTORED
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: SIMULATION_CURRENT_SCOPE_CHANGED
+// TclEventType: SIMULATION_CURRENT_STACK_CHANGED
+// TclEventType: SIMULATION_UPDATE_STACK_FRAMES
+// TclEventType: SIMULATION_CURRENT_STACK_FRAME_CHANGED
+// TclEventType: SIMULATION_UPDATE_LOCALS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// Tcl Message: # run 1000ns 
+// Tcl Message: ==== digital_clock self-test begin ==== PASS time 00:00:00 FAIL time got 0:0:0 expected 23:0:0 PASS time 00:00:00 FAIL time got 0:0:0 expected 1:0:0 PASS time 00:00:00 FAIL time got 0:0:0 expected 0:59:0 
+// Tcl Message: INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_digital_clock_behav' loaded. INFO: [USF-XSim-97] XSim simulation ran for 1000ns 
+// Tcl Message: launch_simulation: Time (s): cpu = 00:00:06 ; elapsed = 00:00:10 . Memory (MB): peak = 881.906 ; gain = 22.859 
+// 'd' command handler elapsed time: 9 seconds
+dismissDialog("Run Simulation"); // e (ch)
+// Elapsed time: 89 seconds
+selectGraphicalView(RDIResource.RDIViews_WAVEFORM_VIEWER, 135, 181); // n (o, ch)
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 741 MB. GUI used memory: 55 MB. Current time: 11/2/26 12:11:46 AM CST
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 741 MB. GUI used memory: 55 MB. Current time: 11/2/26 12:11:46 AM CST
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+selectGraphicalView(RDIResource.RDIViews_WAVEFORM_VIEWER, 140, 316); // n (o, ch)
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+selectGraphicalView(RDIResource.RDIViews_WAVEFORM_VIEWER, 158, 149); // n (o, ch)
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 741 MB. GUI used memory: 55 MB. Current time: 11/2/26 12:11:48 AM CST
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 741 MB. GUI used memory: 55 MB. Current time: 11/2/26 12:11:48 AM CST
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 741 MB. GUI used memory: 55 MB. Current time: 11/2/26 12:11:49 AM CST
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+selectGraphicalView(RDIResource.RDIViews_WAVEFORM_VIEWER, 192, 169); // n (o, ch)
+// HMemoryUtils.trashcanNow. Engine heap size: 741 MB. GUI used memory: 55 MB. Current time: 11/2/26 12:11:49 AM CST
+selectGraphicalView(RDIResource.RDIViews_WAVEFORM_VIEWER, 135, 197); // n (o, ch)
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+selectGraphicalView(RDIResource.RDIViews_WAVEFORM_VIEWER, 135, 219); // n (o, ch)
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 741 MB. GUI used memory: 55 MB. Current time: 11/2/26 12:11:50 AM CST
+selectGraphicalView(RDIResource.RDIViews_WAVEFORM_VIEWER, 135, 227); // n (o, ch)
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 741 MB. GUI used memory: 55 MB. Current time: 11/2/26 12:11:50 AM CST
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// HMemoryUtils.trashcanNow. Engine heap size: 741 MB. GUI used memory: 55 MB. Current time: 11/2/26 12:11:51 AM CST
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 741 MB. GUI used memory: 55 MB. Current time: 11/2/26 12:11:54 AM CST
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 741 MB. GUI used memory: 55 MB. Current time: 11/2/26 12:11:54 AM CST
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 741 MB. GUI used memory: 58 MB. Current time: 11/2/26 12:11:54 AM CST
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 741 MB. GUI used memory: 55 MB. Current time: 11/2/26 12:11:54 AM CST
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 741 MB. GUI used memory: 58 MB. Current time: 11/2/26 12:11:54 AM CST
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 741 MB. GUI used memory: 55 MB. Current time: 11/2/26 12:11:54 AM CST
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_CLOSE_WCFG
+// RDIResource.RDIViews_WAVEFORM_VIEWER: Untitled 1: close view
+closeView(RDIResource.RDIViews_WAVEFORM_VIEWER, "Untitled 1"); // w
+// [GUI Memory]: 96 MB (+16483kb) [00:02:58]
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Settings]", 1, false); // u (O, ch)
+// Run Command: RDIResourceCommand.RDICommands_SETTINGS
+// C (ch): Settings: addNotify
+selectTree(PAResourceQtoS.SettingsDialog_PROJECT_TREE, "[projectRoot, Simulation]", 1, false); // M (C)
+selectComboBox(PAResourceOtoP.ProjectSettingsSimulationPanel_TARGET_SIMULATOR, "ModelSim Simulator", 1); // e (Q, C)
+// [GUI Memory]: 107 MB (+5784kb) [00:03:08]
+// TclEventType: PROJECT_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectButton("PAResourceOtoP.ProjectSettingsSimulationPanel_QUESTASIM_MODELSIM_VERILOG_COMPILER_Yes", "Yes"); // JButton (A, H)
+// Tcl Message: set_property target_simulator ModelSim [current_project] 
+// TclEventType: DG_ANALYSIS_MSG_RESET
+selectButton(RDIResource.BaseDialog_APPLY, "Apply"); // a (C)
+// bv (ch):  Change Settings : addNotify
+// HOptionPane Error: 'The compiled library directory: 'E:/Project/ModelsimProject/vivado_project/digital_ clock.cache/compile_simlib/modelsim' does not exist. Please specify a valid directory name. (Compiled Library Location)'
+dismissDialog("Change Settings"); // bv (ch)
+// TclEventType: DG_GRAPH_GENERATED
+// [GUI Memory]: 115 MB (+2440kb) [00:03:16]
+selectButton("PAResourceOtoP.ProjectSettingsSimulationPanel_COMPILED_LIBRARY_DIRECTORY_DOES_OK", "OK"); // JButton (A, H)
+setText(PAResourceOtoP.ProjectSettingsSimulationPanel_CHOOSE_COMPILED_LIBRARY_LOCATION, (String) null); // aj (ai, C)
+setText(PAResourceOtoP.ProjectSettingsSimulationPanel_CHOOSE_COMPILED_LIBRARY_LOCATION, (String) null); // aj (ai, C)
+selectButton(RDIResource.BaseDialog_APPLY, "Apply"); // a (C)
+// bv (ch):  Change Settings : addNotify
+// Tcl Message: set_property compxlib.modelsim_compiled_library_dir {} [current_project] 
+dismissDialog("Change Settings"); // bv (ch)
+// HMemoryUtils.trashcanNow. Engine heap size: 761 MB. GUI used memory: 56 MB. Current time: 11/2/26 12:12:27 AM CST
+selectButton("RDIResource.HFileChooser_OK_TO_CREATE_DIRECTORY_Cancel", "Cancel"); // JButton (A, H)
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (C)
+// bv (ch):  Change Settings : addNotify
+// Tcl Message: set_property compxlib.modelsim_compiled_library_dir {} [current_project] 
+dismissDialog("Change Settings"); // bv (ch)
+selectButton("RDIResource.HFileChooser_OK_TO_CREATE_DIRECTORY_Cancel", "Cancel"); // JButton (A, H)
+selectComboBox(PAResourceOtoP.ProjectSettingsSimulationPanel_TARGET_SIMULATOR, "ModelSim Simulator", 1); // e (Q, C)
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (C)
+// bv (ch):  Change Settings : addNotify
+// Tcl Message: set_property compxlib.modelsim_compiled_library_dir {} [current_project] 
+dismissDialog("Change Settings"); // bv (ch)
+selectButton("RDIResource.HFileChooser_OK_TO_CREATE_DIRECTORY_OK", "OK"); // JButton (A, H)
+// Tcl Message: set_property ip.user_files_dir E:/Project/ModelsimProject/vivado_project/digital_clock.ip_user_files [current_project] 
+// TclEventType: CREATE_IP_CATALOG
+dismissDialog("Settings"); // C (ch)
+// Tcl Message: update_ip_catalog 
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation, Run Simulation]", 10, false); // u (O, ch)
+selectMenuItem(PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL, "Run Behavioral Simulation"); // ac (ai, ch)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL
+// TclEventType: SIMULATION_CLOSE_SIMULATION
+// e (ch):  Run Simulation : addNotify
+selectButton("PAResourceQtoS.SimulationRun_SIMULATION_ALREADY_RUNNING_DO_YOU_Yes", "Yes"); // JButton (A, G)
+// Tcl Message: close_sim 
+// Tcl Message: INFO: [Simtcl 6-16] Simulation closed 
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Message: launch_simulation 
+// Elapsed time: 96 seconds
+selectButton(RDIResource.ProgressDialog_CANCEL, "Cancel"); // a (e)
+// Tcl Message: INFO: [Common 17-41] Interrupt caught. Command should exit soon. 
+selectButton(RDIResource.ProgressDialog_BACKGROUND, "Background"); // a (e)
+// 'd' command handler elapsed time: 99 seconds
+// Tcl Message: run_program: Time (s): cpu = 00:00:03 ; elapsed = 00:01:38 . Memory (MB): peak = 885.336 ; gain = 0.000 
+// Tcl Message: INFO: [Common 17-344] 'run_program' was cancelled INFO: [Vivado 12-5357] 'compile' step aborted 
+// Tcl Message: launch_simulation: Time (s): cpu = 00:00:03 ; elapsed = 00:01:38 . Memory (MB): peak = 885.336 ; gain = 0.000 
+// Tcl Message: INFO: [Common 17-344] 'launch_simulation' was cancelled 
+// CommandFailedException: ERROR: [Common 17-69] Command failed:  
+dismissDialog("Run Simulation"); // e (ch)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Settings]", 1, false); // u (O, ch)
+// Run Command: RDIResourceCommand.RDICommands_SETTINGS
+// C (ch): Settings: addNotify
+selectButton(PAResourceOtoP.ProjectSettingsSimulationPanel_CHOOSE_COMPILED_LIBRARY_LOCATION, (String) null); // q (ai, C)
+dismissFolderChooser();
+// HMemoryUtils.trashcanNow. Engine heap size: 786 MB. GUI used memory: 53 MB. Current time: 11/2/26 12:14:42 AM CST
+selectTree(PAResourceQtoS.SettingsDialog_PROJECT_TREE, "[projectRoot, Elaboration]", 2, false); // M (C)
+selectTree(PAResourceQtoS.SettingsDialog_PROJECT_TREE, "[projectRoot, Simulation]", 1, false); // M (C)
+selectTree(PAResourceQtoS.SettingsDialog_PROJECT_TREE, "[projectRoot, General]", 0, false); // M (C)
+// [Engine Memory]: 786 MB (+10056kb) [00:05:44]
+selectTree(PAResourceQtoS.SettingsDialog_PROJECT_TREE, "[projectRoot, Simulation]", 1, false); // M (C)
+// Elapsed time: 77 seconds
+dismissDialog("Settings"); // C (ch)
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // U (q, ch)
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // U (q, ch)
+selectMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // U (q, ch)
+dismissMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // U (q, ch)
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // U (q, ch)
+selectMenu(RDIResourceCommand.RDICommands_CUSTOM_COMMANDS, "Custom Commands"); // Z (ch)
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // U (q, ch)
+selectMenu(PAResourceItoN.MainMenuMgr_FLOW, "Flow"); // U (q, ch)
+dismissMenu(PAResourceItoN.MainMenuMgr_FLOW, "Flow"); // U (q, ch)
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // U (q, ch)
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // U (q, ch)
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // U (q, ch)
+selectMenuItem(PAResourceCommand.PACommandNames_SIMULATION_COMPILE_LIBRARIES, "Compile Simulation Libraries..."); // ac (ch)
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // U (q, ch)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_COMPILE_LIBRARIES
+// e (ch): Compile Simulation Libraries: addNotify
+// Elapsed time: 36 seconds
+setText(PAResourceQtoS.SimulationCompileLibrariesDialog_COMPILED_LIBRARY_LOCATION, "E:/Project/ModelsimProject/vivado_project/digital_clock.cache/compile_simlib/modelsim"); // aj (n, e)
+// Elapsed time: 10 seconds
+setText(PAResourceQtoS.SimulationCompileLibrariesDialog_COMPILED_LIBRARY_LOCATION, "E:/Project/ModelsimProject/vivado_project/digital_clock.cache/compile_simlib/modelsim"); // aj (n, e)
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a (e)
+// 'b' command handler elapsed time: 46 seconds
+dismissDialog("Compile Simulation Libraries"); // e (ch)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Settings]", 1, false); // u (O, ch)
+// Run Command: RDIResourceCommand.RDICommands_SETTINGS
+// C (ch): Settings: addNotify
+// Elapsed time: 12 seconds
+selectButton(PAResourceOtoP.ProjectSettingsSimulationPanel_CHOOSE_COMPILED_LIBRARY_LOCATION, (String) null); // q (ai, C)
+// Elapsed time: 14 seconds
+dismissFolderChooser();
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a (C)
+dismissDialog("Settings"); // C (ch)
+// Elapsed time: 33 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Settings]", 1, false); // u (O, ch)
+// Run Command: RDIResourceCommand.RDICommands_SETTINGS
+// C (ch): Settings: addNotify
+selectTree(PAResourceQtoS.SettingsDialog_OPTIONS_TREE, "[optionsRoot, 3rd Party Simulators]", 7, false); // M (C)
+// Elapsed time: 15 seconds
+selectButton(PAResourceQtoS.SettingsThirdPartyToolsPage_SPECIFY_MODELSIM_INSTALL_PATH, (String) null); // q (ai, C)
+// Elapsed time: 27 seconds
+setFolderChooser("F:/ProgramFiles/Modelsim/win64pe");
+selectButton(RDIResource.BaseDialog_APPLY, "Apply"); // a (C)
+// bv (ch):  Change Settings : addNotify
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: set_property compxlib.modelsim_compiled_library_dir E:/Project/ModelsimProject/vivado_project/digital_clock.cache/compile_simlib/modelsim [current_project] 
+// TclEventType: CREATE_IP_CATALOG
+dismissDialog("Change Settings"); // bv (ch)
+// Tcl Message: update_ip_catalog 
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (C)
+// bv (ch):  Change Settings : addNotify
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: CREATE_IP_CATALOG
+dismissDialog("Change Settings"); // bv (ch)
+dismissDialog("Settings"); // C (ch)
+// Tcl Message: update_ip_catalog 
+// HMemoryUtils.trashcanNow. Engine heap size: 806 MB. GUI used memory: 56 MB. Current time: 11/2/26 12:19:02 AM CST
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation, Run Simulation]", 10, false); // u (O, ch)
+selectMenuItem(PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL, "Run Behavioral Simulation"); // ac (ai, ch)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL
+// TclEventType: FILE_SET_CHANGE
+// e (ch):  Run Simulation : addNotify
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Message: launch_simulation -install_path F:/ProgramFiles/Modelsim/win64pe 
+// Tcl Message: Reading F:/ProgramFiles/Modelsim/tcl/vsim/pref.tcl  # 10.6c  # do {tb_digital_clock_compile.do} 
+// Elapsed time: 89 seconds
+selectButton(RDIResource.ProgressDialog_CANCEL, "Cancel"); // a (e)
+// Tcl Message: INFO: [Common 17-41] Interrupt caught. Command should exit soon. 
+// Tcl Message: run_program: Time (s): cpu = 00:00:02 ; elapsed = 00:01:30 . Memory (MB): peak = 943.238 ; gain = 0.098 
+// CommandFailedException: ERROR: [Common 17-69] Command failed:  
+// Tcl Message: INFO: [Common 17-344] 'run_program' was cancelled INFO: [Vivado 12-5357] 'compile' step aborted 
+// Tcl Message: launch_simulation: Time (s): cpu = 00:00:02 ; elapsed = 00:01:30 . Memory (MB): peak = 943.238 ; gain = 1.289 
+// Tcl Message: INFO: [Common 17-344] 'launch_simulation' was cancelled 
+// 'd' command handler elapsed time: 90 seconds
+dismissDialog("Run Simulation"); // e (ch)
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // U (q, ch)
+selectMenuItem(PAResourceCommand.PACommandNames_SIMULATION_COMPILE_LIBRARIES, "Compile Simulation Libraries..."); // ac (ch)
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // U (q, ch)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_COMPILE_LIBRARIES
+// e (ch): Compile Simulation Libraries: addNotify
+// WARNING: HSwingWorker (Update Runs Swing Worker) is taking too long to process. Increasing delay to 3000 ms.
+// WARNING: HSwingWorker (Refresh Filesets Swing Worker) is taking too long to process. Increasing delay to 3000 ms.
+// Elapsed time: 410 seconds
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a (e)
+// 'b' command handler elapsed time: 410 seconds
+dismissDialog("Compile Simulation Libraries"); // e (ch)
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // U (q, ch)
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // Z (ch)
+selectMenuItem(PAResourceCommand.PACommandNames_OPEN_PROJECT, "Open..."); // ac (ch)
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // U (q, ch)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_PROJECT
+// Elapsed time: 18 seconds
+setFileChooser("E:/Project/VivadoProject/Bin2DH_20260930/Bin2DH_20260930.xpr");
+// TclEventType: PROJECT_CLOSE
+// HMemoryUtils.trashcanNow. Engine heap size: 814 MB. GUI used memory: 59 MB. Current time: 11/2/26 12:27:53 AM CST
+// Opening Vivado Project: E:/Project/VivadoProject/Bin2DH_20260930/Bin2DH_20260930.xpr. Version: Vivado v2018.1 
+// bv (ch):  Open Project : addNotify
+selectButton("PAResourceOtoP.PABaseTab_WOULD_YOU_LIKE_TO_CLOSE_CURRENTLY_Yes", "Yes"); // JButton (A, G)
+// Tcl Message: close_project 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_NEW
+// Tcl Message: open_project E:/Project/VivadoProject/Bin2DH_20260930/Bin2DH_20260930.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified 
+// Tcl Message: INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'F:/ProgramFiles/Xilinx/Vivado/2018.1/data/ip'. 
+// TclEventType: PROJECT_NEW
+// [Engine Memory]: 865 MB (+42570kb) [00:18:55]
+// Project name: Bin2DH_20260930; location: E:/Project/VivadoProject/Bin2DH_20260930; part: xc7a35tcpg236-1
+// 'i' command handler elapsed time: 23 seconds
+dismissDialog("Open Project"); // bv (ch)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Settings]", 1, false); // u (O, ch)
+// Run Command: RDIResourceCommand.RDICommands_SETTINGS
+// TclEventType: DG_GRAPH_GENERATED
+// C (ch): Settings: addNotify
+// Tcl Message: update_compile_order -fileset sources_1 
+// [GUI Memory]: 125 MB (+5141kb) [00:19:01]
+// [GUI Memory]: 132 MB (+546kb) [00:19:06]
+selectTree(PAResourceQtoS.SettingsDialog_PROJECT_TREE, "[projectRoot, Simulation]", 1, false); // M (C)
+setText(PAResourceOtoP.ProjectSettingsSimulationPanel_CHOOSE_COMPILED_LIBRARY_LOCATION, "F:/ProgramFiles/Xilinx/Xilib"); // aj (ai, C)
+selectTree(PAResourceQtoS.SettingsDialog_OPTIONS_TREE, "[optionsRoot, 3rd Party Simulators]", 7, false); // M (C)
+selectTree(PAResourceQtoS.SettingsDialog_PROJECT_TREE, "[projectRoot, Simulation]", 1, false); // M (C)
+// [GUI Memory]: 146 MB (+8004kb) [00:19:16]
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a (C)
+dismissDialog("Settings"); // C (ch)
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // U (q, ch)
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // Z (ch)
+selectMenuItem(PAResourceCommand.PACommandNames_OPEN_PROJECT, "Open..."); // ac (ch)
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // U (q, ch)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_PROJECT
+// HMemoryUtils.trashcanNow. Engine heap size: 908 MB. GUI used memory: 71 MB. Current time: 11/2/26 12:28:23 AM CST
+setFileChooser("E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.xpr");
+// TclEventType: PROJECT_CLOSE
+// HMemoryUtils.trashcanNow. Engine heap size: 908 MB. GUI used memory: 71 MB. Current time: 11/2/26 12:28:31 AM CST
+// bv (ch):  Open Project : addNotify
+selectButton("PAResourceOtoP.PABaseTab_WOULD_YOU_LIKE_TO_CLOSE_CURRENTLY_Yes", "Yes"); // JButton (A, G)
+// Tcl Message: close_project 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_NEW
+// Tcl Message: open_project E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified 
+// Tcl Message: INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'F:/ProgramFiles/Xilinx/Vivado/2018.1/data/ip'. 
+// TclEventType: PROJECT_NEW
+// [Engine Memory]: 910 MB (+1554kb) [00:19:33]
+// Project name: digital_clock; location: E:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project; part: xc7a35tcpg236-1
+// 'i' command handler elapsed time: 13 seconds
+dismissDialog("Open Project"); // bv (ch)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Settings]", 1, false); // u (O, ch)
+// Run Command: RDIResourceCommand.RDICommands_SETTINGS
+// C (ch): Settings: addNotify
+// Tcl Message: update_compile_order -fileset sources_1 
+// [GUI Memory]: 157 MB (+3733kb) [00:19:41]
+selectTree(PAResourceQtoS.SettingsDialog_PROJECT_TREE, "[projectRoot, Simulation]", 1, false); // M (C)
+setText(PAResourceOtoP.ProjectSettingsSimulationPanel_CHOOSE_COMPILED_LIBRARY_LOCATION, "F:/ProgramFiles/Xilinx/Xilib"); // aj (ai, C)
+selectTree(PAResourceQtoS.SettingsDialog_OPTIONS_TREE, "[optionsRoot, 3rd Party Simulators]", 7, false); // M (C)

@@ -1,0 +1,73 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dE:/Project/ModelsimProject/Êý×ÖÖÓ/vivado_project/digital_clock.sim/sim_1/behav/modelsim
+vdigital_clock
+Z0 !s110 1793638128
+!i10b 1
+!s100 G]6_:T?T2:IF`=SLYLbIK1
+I=iIUe0_00Gl?8Z<[Xj6KO2
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dE:/Project/ModelsimProject/Bell/vivado_project/digital_clock.sim/sim_1/behav/modelsim
+w1793637753
+8../../../../../rtl/digital_clock.v
+F../../../../../rtl/digital_clock.v
+L0 7
+Z3 OP;L;10.6c;65
+r1
+!s85 0
+31
+Z4 !s108 1793638128.000000
+Z5 !s107 ../../../../../sim/tb_digital_clock.v|../../../../../rtl/digital_clock.v|
+Z6 !s90 -64|-incr|-work|xil_defaultlib|../../../../../rtl/digital_clock.v|../../../../../sim/tb_digital_clock.v|
+!i113 1
+Z7 o-work xil_defaultlib
+Z8 tCvgOpt 0
+vglbl
+R0
+!i10b 1
+!s100 JWZ^meD<P7inSF0<1SiO32
+IHANT?><<>G9J5i]G9zVT[0
+R1
+R2
+w1522801934
+8glbl.v
+Fglbl.v
+L0 6
+R3
+r1
+!s85 0
+31
+R4
+!s107 glbl.v|
+!s90 -work|xil_defaultlib|glbl.v|
+!i113 1
+R7
+R8
+vtb_digital_clock
+R0
+!i10b 1
+!s100 j>?e0@_J__MgL8=<7OXId1
+Igj^[EVcdW4c6Nb8OJ3gjN1
+R1
+R2
+w1793637775
+8../../../../../sim/tb_digital_clock.v
+F../../../../../sim/tb_digital_clock.v
+L0 7
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8

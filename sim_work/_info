@@ -1,0 +1,52 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dG:/
+vdigital_clock
+Z0 !s110 1793670197
+!i10b 1
+!s100 G_DOoT?ENdLCLXdn3zjU03
+I2TnC8E1:U;<>8D8cbhW541
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+dG:/
+w1793639339
+8rtl/digital_clock.v
+Frtl/digital_clock.v
+L0 7
+Z2 OP;L;10.6c;65
+r1
+!s85 0
+31
+Z3 !s108 1793670197.000000
+!s107 sim/tb_digital_clock.v|rtl/digital_clock.v|
+Z4 !s90 -work|work|rtl/digital_clock.v|sim/tb_digital_clock.v|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+vtb_digital_clock
+R0
+!i10b 1
+!s100 `b]8nK@3[=8KZ8OhOi4lV0
+I2fbMf4iPFI7je[[SVhBj13
+R1
+dG:/
+w1793639278
+8sim/tb_digital_clock.v
+Fsim/tb_digital_clock.v
+L0 7
+R2
+r1
+!s85 0
+31
+R3
+Z7 !s107 sim/tb_digital_clock.v|rtl/digital_clock.v|
+R4
+!i113 1
+R5
+R6
