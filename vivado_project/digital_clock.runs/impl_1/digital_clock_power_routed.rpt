@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-| Date             : Tue Nov  3 01:16:04 2026
+| Date             : Wed Nov  4 15:31:26 2026
 | Host             : EndsLikeNeighbours running 64-bit major release  (build 9200)
 | Command          : report_power -file digital_clock_power_routed.rpt -pb digital_clock_power_summary_routed.pb -rpx digital_clock_power_routed.rpx
 | Design           : digital_clock
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.078        |
+| Total On-Chip Power (W)  | 0.085        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.006        |
+| Dynamic (W)              | 0.013        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.6         |
@@ -53,15 +53,16 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.002 |        3 |       --- |             --- |
-| Slice Logic    |    <0.001 |      445 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      157 |     20800 |            0.75 |
-|   CARRY4       |    <0.001 |       38 |      8150 |            0.47 |
-|   Register     |    <0.001 |      199 |     41600 |            0.48 |
+| Slice Logic    |    <0.001 |      849 |       --- |             --- |
+|   LUT as Logic |    <0.001 |      362 |     20800 |            1.74 |
+|   CARRY4       |    <0.001 |       54 |      8150 |            0.66 |
+|   Register     |    <0.001 |      317 |     41600 |            0.76 |
+|   F7/F8 Muxes  |    <0.001 |        6 |     32600 |            0.02 |
 |   Others       |     0.000 |        2 |       --- |             --- |
-| Signals        |    <0.001 |      387 |       --- |             --- |
-| I/O            |     0.004 |       23 |       106 |           21.70 |
+| Signals        |    <0.001 |      731 |       --- |             --- |
+| I/O            |     0.009 |       27 |       106 |           25.47 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.078 |          |           |                 |
+| Total          |     0.085 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -71,9 +72,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.012 |       0.003 |      0.010 |
+| Vccint    |       1.000 |     0.014 |       0.004 |      0.010 |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |
-| Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |
+| Vcco33    |       3.300 |     0.004 |       0.003 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -140,7 +141,7 @@ Table of Contents
 +---------------+-----------+
 | Name          | Power (W) |
 +---------------+-----------+
-| digital_clock |     0.006 |
+| digital_clock |     0.013 |
 +---------------+-----------+
 
 

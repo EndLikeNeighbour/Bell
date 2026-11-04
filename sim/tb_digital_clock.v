@@ -14,19 +14,27 @@ module tb_digital_clock;
     reg sw0 = 1;
     reg sw1 = 0;
     reg sw2 = 0;
+    reg sw3 = 0;
+    reg sw4 = 0;
     wire [3:0] an;
     wire [7:0] seg;
     wire ld0;
     wire ld1;
+    wire ld7;
+    wire ld8;
     integer errors = 0;
     integer cases = 0;
+    integer stopwatch_second_snapshot;
+    integer stopwatch_centisecond_snapshot;
 
     digital_clock #(
         .CLK_FREQ_HZ(4),
         .DEBOUNCE_CYCLES(2),
         .SCAN_DIV(2),
         .AUTO_HH_SECONDS(5),
-        .AUTO_MM_SECONDS(3)
+        .AUTO_MM_SECONDS(3),
+        .CENTISECOND_CYCLES(4),
+        .ALARM_BLINK_CYCLES(2)
     ) dut (
         .clk  (clk  ),
         .btnc (btnc ),
@@ -37,10 +45,14 @@ module tb_digital_clock;
         .sw0  (sw0  ),
         .sw1  (sw1  ),
         .sw2  (sw2  ),
+        .sw3  (sw3  ),
+        .sw4  (sw4  ),
         .an   (an   ),
         .seg  (seg  ),
         .ld0  (ld0  ),
-        .ld1  (ld1  )
+        .ld1  (ld1  ),
+        .ld7  (ld7  ),
+        .ld8  (ld8  )
     );
 
     always #5 clk = ~clk;
@@ -296,9 +308,199 @@ module tb_digital_clock;
             $display("FAIL manual left page selection after auto mode");
         end else $display("PASS manual left page selection after auto mode");
 
-        // Hours: decrement underflow, increment overflow, and ordinary +/- operations.
+        // Mode isolation: the wall clock continues under SW0 while SW3 selects the timer.
+        @(negedge clk);
+        sw3 = 1;
+        sw0 = 0;
+        repeat (6) @(posedge clk);
+        @(negedge clk);
+        dut.hour = 5'd2;
+        dut.minute = 6'd3;
+        dut.second = 6'd4;
+        dut.sec_count = 0;
+        wait_clock_cycles(4);
+        cases = cases + 1;
+        if (dut.hour !== 5'd2 || dut.minute !== 6'd3 || dut.second !== 6'd5) begin
+            errors = errors + 1;
+            $display("FAIL wall clock did not run in timer mode");
+        end else $display("PASS wall clock runs in timer mode");
+        @(negedge clk);
+        sw0 = 1;
+        repeat (6) @(posedge clk);
+        press(0);
+        cases = cases + 1;
+        if (dut.hour !== 5'd2 || dut.minute !== 6'd3) begin
+            errors = errors + 1;
+            $display("FAIL timer buttons altered wall-clock setting");
+        end else $display("PASS timer buttons isolated from wall clock");
+
+        // Stopwatch starts at 00.00 and advances by one centisecond per four clocks.
+        @(negedge clk);
+        sw4 = 0;
+        repeat (6) @(posedge clk);
+        press(3);
+        cases = cases + 1;
+        if (dut.stopwatch_running !== 1'b0 || dut.stopwatch_second !== 0 || dut.stopwatch_centisecond !== 0) begin
+            errors = errors + 1;
+            $display("FAIL stopwatch reset state");
+        end else $display("PASS stopwatch reset state");
+        press(2);
+        stopwatch_second_snapshot = dut.stopwatch_second;
+        stopwatch_centisecond_snapshot = dut.stopwatch_centisecond;
+        begin : wait_stopwatch_increment
+            repeat (24) begin
+                @(posedge clk);
+                if (dut.stopwatch_centisecond == stopwatch_centisecond_snapshot + 2) disable wait_stopwatch_increment;
+            end
+        end
+        #1;
+        cases = cases + 1;
+        if (dut.stopwatch_centisecond !== stopwatch_centisecond_snapshot + 2 || dut.stopwatch_second !== stopwatch_second_snapshot) begin
+            errors = errors + 1;
+            $display("FAIL stopwatch centisecond increment got=%0d:%0d expected=%0d:%0d running=%b div=%0d",
+                     dut.stopwatch_second, dut.stopwatch_centisecond,
+                     stopwatch_second_snapshot, stopwatch_centisecond_snapshot + 2,
+                     dut.stopwatch_running, dut.stopwatch_tick_count);
+        end else $display("PASS stopwatch centisecond increment");
+        press(2);
+        stopwatch_second_snapshot = dut.stopwatch_second;
+        stopwatch_centisecond_snapshot = dut.stopwatch_centisecond;
+        wait_clock_cycles(12);
+        cases = cases + 1;
+        if (dut.stopwatch_second !== stopwatch_second_snapshot || dut.stopwatch_centisecond !== stopwatch_centisecond_snapshot) begin
+            errors = errors + 1;
+            $display("FAIL stopwatch pause hold");
+        end else $display("PASS stopwatch pause hold");
+        press(3);
+        cases = cases + 1;
+        if (dut.stopwatch_running !== 1'b0 || dut.stopwatch_second !== 0 || dut.stopwatch_centisecond !== 0) begin
+            errors = errors + 1;
+            $display("FAIL stopwatch reset button");
+        end else $display("PASS stopwatch reset button");
+
+        // Verify rollover from 59.99 to 00.00.
+        @(negedge clk);
+        dut.stopwatch_second = 6'd59;
+        dut.stopwatch_centisecond = 7'd99;
+        dut.stopwatch_tick_count = 3;
+        dut.stopwatch_running = 1'b1;
+        wait_clock_cycles(1);
+        cases = cases + 1;
+        if (dut.stopwatch_second !== 0 || dut.stopwatch_centisecond !== 0) begin
+            errors = errors + 1;
+            $display("FAIL stopwatch 59.99 rollover");
+        end else $display("PASS stopwatch 59.99 rollover");
+
+        // Countdown: select timer mode, set one second, and verify the setting display/state.
+        @(negedge clk);
+        sw4 = 1;
+        sw3 = 1;
+        sw0 = 1;
+        sw1 = 1;
+        repeat (6) @(posedge clk);
+        press(0);
+        cases = cases + 1;
+        if (dut.countdown_set_second !== 6'd1 || dut.countdown_second !== 6'd1) begin
+            errors = errors + 1;
+            $display("FAIL countdown seconds increment");
+        end else $display("PASS countdown seconds increment");
+
+        // Start, pause, and resume; paused value must hold.
+        press(2);
+        cases = cases + 1;
+        if (dut.countdown_running !== 1'b1) begin
+            errors = errors + 1;
+            $display("FAIL countdown start");
+        end else $display("PASS countdown start");
+        wait_clock_cycles(8);
+        press(2);
+        stopwatch_second_snapshot = dut.countdown_second;
+        stopwatch_centisecond_snapshot = dut.countdown_centisecond;
+        wait_clock_cycles(12);
+        cases = cases + 1;
+        if (dut.countdown_running !== 1'b0 || dut.countdown_second !== stopwatch_second_snapshot || dut.countdown_centisecond !== stopwatch_centisecond_snapshot) begin
+            errors = errors + 1;
+            $display("FAIL countdown pause hold");
+        end else $display("PASS countdown pause hold");
+        press(2);
+        begin : wait_countdown_resume_tick
+            repeat (12) begin
+                @(posedge clk);
+                if (dut.countdown_centisecond < stopwatch_centisecond_snapshot) disable wait_countdown_resume_tick;
+            end
+        end
+        cases = cases + 1;
+        if (dut.countdown_running !== 1'b1 || dut.countdown_centisecond >= stopwatch_centisecond_snapshot) begin
+            errors = errors + 1;
+            $display("FAIL countdown resumes from remaining value: run=%b centi=%0d previous=%0d",
+                     dut.countdown_running, dut.countdown_centisecond, stopwatch_centisecond_snapshot);
+        end else $display("PASS countdown resumes remaining value");
+        press(2);
+
+        // Resume and verify completion at exactly 00:00.00 with alternating LEDs.
+        press(2);
+        @(negedge clk);
+        dut.countdown_minute = 0;
+        dut.countdown_second = 0;
+        dut.countdown_centisecond = 1;
+        dut.countdown_tick_count = 3;
+        dut.countdown_running = 1;
+        dut.countdown_done = 0;
+        wait_clock_cycles(1);
+        cases = cases + 1;
+        if (dut.countdown_running !== 1'b0 || dut.countdown_done !== 1'b1 || dut.countdown_centisecond !== 0) begin
+            errors = errors + 1;
+            $display("FAIL countdown terminal tick");
+        end else $display("PASS countdown terminal tick");
+        cases = cases + 1;
+        if ({ld8, ld7} !== 2'b01) begin
+            errors = errors + 1;
+            $display("FAIL countdown initial alarm LED phase");
+        end else $display("PASS countdown initial alarm LED phase");
+        wait_clock_cycles(2);
+        cases = cases + 1;
+        if ({ld8, ld7} !== 2'b10) begin
+            errors = errors + 1;
+            $display("FAIL countdown alternating alarm LED phase");
+        end else $display("PASS countdown alternating alarm LED phase");
+
+        // BTNR reloads the configured value, stops, and clears the alarm.
+        press(3);
+        cases = cases + 1;
+        if (dut.countdown_running !== 1'b0 || dut.countdown_done !== 1'b0 || dut.countdown_second !== dut.countdown_set_second || dut.countdown_minute !== dut.countdown_set_minute || {ld8, ld7} !== 2'b00) begin
+            errors = errors + 1;
+            $display("FAIL countdown reset/reload");
+        end else $display("PASS countdown reset/reload");
+
+        // Verify second-field decrement underflow wraps 00 to 59.
+        @(negedge clk);
+        dut.countdown_set_second = 0;
+        dut.countdown_second = 0;
+        sw1 = 1;
+        press(1);
+        cases = cases + 1;
+        if (dut.countdown_set_second !== 6'd59 || dut.countdown_second !== 6'd59) begin
+            errors = errors + 1;
+            $display("FAIL countdown seconds decrement wrap");
+        end else $display("PASS countdown seconds decrement wrap");
+
+        // Countdown mode must not alter the background wall clock via BTNU.
+        cases = cases + 1;
+        if (dut.hour !== 5'd2 || dut.minute !== 6'd3) begin
+            errors = errors + 1;
+            $display("FAIL countdown controls changed wall clock");
+        end else $display("PASS countdown controls isolated from wall clock");
+
+        // Return to clock mode; existing wall-clock checks continue unchanged.
+        @(negedge clk);
+        sw3 = 0;
+        sw4 = 0;
+        sw0 = 1;
+        sw2 = 0;
+        repeat (6) @(posedge clk);
         reset_clock();
         @(negedge clk);
+        sw1 = 0;
         sw0 = 1;
         repeat (6) @(posedge clk);
         press(1); check_time(23, 0, 0);

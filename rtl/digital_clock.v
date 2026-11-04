@@ -9,7 +9,9 @@ module digital_clock #(
     parameter integer DEBOUNCE_CYCLES = 1000000,
     parameter integer SCAN_DIV = 25000,
     parameter integer AUTO_HH_SECONDS = 5,
-    parameter integer AUTO_MM_SECONDS = 3
+    parameter integer AUTO_MM_SECONDS = 3,
+    parameter integer CENTISECOND_CYCLES = (CLK_FREQ_HZ / 100 < 1) ? 1 : CLK_FREQ_HZ / 100,
+    parameter integer ALARM_BLINK_CYCLES = (CLK_FREQ_HZ / 4 < 1) ? 1 : CLK_FREQ_HZ / 4
 )(
     input  wire       clk,
     input  wire       btnc,
@@ -20,14 +22,20 @@ module digital_clock #(
     input  wire       sw0,
     input  wire       sw1,
     input  wire       sw2,
+    input  wire       sw3,
+    input  wire       sw4,
     output reg  [3:0] an,
     output reg  [7:0] seg,
     output reg        ld0,
-    output reg        ld1
+    output reg        ld1,
+    output reg        ld7,
+    output reg        ld8
 );
 
     localparam integer DB_LIMIT = (DEBOUNCE_CYCLES < 1) ? 1 : DEBOUNCE_CYCLES;
     localparam integer SCAN_LIMIT = (SCAN_DIV < 1) ? 1 : SCAN_DIV;
+    localparam integer CENTISECOND_LIMIT = (CENTISECOND_CYCLES < 1) ? 1 : CENTISECOND_CYCLES;
+    localparam integer ALARM_BLINK_LIMIT = (ALARM_BLINK_CYCLES < 1) ? 1 : ALARM_BLINK_CYCLES;
     localparam integer AUTO_HH_LIMIT = (AUTO_HH_SECONDS < 1) ? 1 : AUTO_HH_SECONDS;
     localparam integer AUTO_MM_LIMIT = (AUTO_MM_SECONDS < 1) ? 1 : AUTO_MM_SECONDS;
     localparam integer AUTO_PHASE_MAX = (AUTO_HH_LIMIT > AUTO_MM_LIMIT) ? AUTO_HH_LIMIT : AUTO_MM_LIMIT;
@@ -35,6 +43,8 @@ module digital_clock #(
     localparam integer SEC_COUNT_W = (CLK_FREQ_HZ <= 2) ? 1 : $clog2(CLK_FREQ_HZ);
     localparam integer DB_COUNT_W = (DB_LIMIT <= 1) ? 1 : $clog2(DB_LIMIT + 1);
     localparam integer SCAN_COUNT_W = (SCAN_LIMIT <= 1) ? 1 : $clog2(SCAN_LIMIT);
+    localparam integer CENTISECOND_COUNT_W = (CENTISECOND_LIMIT <= 1) ? 1 : $clog2(CENTISECOND_LIMIT);
+    localparam integer ALARM_BLINK_COUNT_W = (ALARM_BLINK_LIMIT <= 1) ? 1 : $clog2(ALARM_BLINK_LIMIT);
 
     reg btnc_meta;
     reg btnc_sync;
@@ -45,6 +55,10 @@ module digital_clock #(
     reg sw2_meta;
     reg sw2_sync;
     reg sw2_sync_d;
+    reg sw3_meta;
+    reg sw3_sync;
+    reg sw4_meta;
+    reg sw4_sync;
     reg [3:0] key_meta;
     reg [3:0] key_sync;
     reg [3:0] key_state;
@@ -61,12 +75,37 @@ module digital_clock #(
     reg auto_page_sel;
     reg [AUTO_PHASE_W-1:0] auto_elapsed;
     reg [SEC_COUNT_W-1:0] auto_sec_count;
+
+    reg [CENTISECOND_COUNT_W-1:0] stopwatch_tick_count;
+    reg [CENTISECOND_COUNT_W-1:0] countdown_tick_count;
+    reg [5:0] stopwatch_second;
+    reg [6:0] stopwatch_centisecond;
+    reg stopwatch_running;
+    reg [5:0] countdown_set_minute;
+    reg [5:0] countdown_set_second;
+    reg [5:0] countdown_minute;
+    reg [5:0] countdown_second;
+    reg [6:0] countdown_centisecond;
+    reg countdown_running;
+    reg countdown_done;
+    reg countdown_started;
+    reg [ALARM_BLINK_COUNT_W-1:0] alarm_blink_count;
+    reg alarm_blink_phase;
+    reg sw3_sync_d;
+    reg sw4_sync_d;
+
     reg [3:0] digit;
     reg dp_on;
     integer i;
 
     wire display_page;
     wire colon_blink;
+    wire timer_mode;
+    wire stopwatch_mode;
+    wire countdown_mode;
+    assign timer_mode = sw3_sync;
+    assign stopwatch_mode = sw3_sync && (sw4_sync == 1'b0);
+    assign countdown_mode = sw3_sync && (sw4_sync == 1'b1);
     assign display_page = sw2_sync ? auto_page_sel : manual_page_sel;
     assign colon_blink = (second[0] == 1'b0);
 
@@ -86,6 +125,12 @@ module digital_clock #(
             sw2_meta <= 1'b0;
             sw2_sync <= 1'b0;
             sw2_sync_d <= 1'b0;
+            sw3_meta <= 1'b0;
+            sw3_sync <= 1'b0;
+            sw4_meta <= 1'b0;
+            sw4_sync <= 1'b0;
+            sw3_sync_d <= 1'b0;
+            sw4_sync_d <= 1'b0;
         end else begin
             sw0_meta <= sw0;
             sw0_sync <= sw0_meta;
@@ -94,6 +139,12 @@ module digital_clock #(
             sw2_meta <= sw2;
             sw2_sync <= sw2_meta;
             sw2_sync_d <= sw2_sync;
+            sw3_meta <= sw3;
+            sw3_sync <= sw3_meta;
+            sw4_meta <= sw4;
+            sw4_sync <= sw4_meta;
+            sw3_sync_d <= sw3_sync;
+            sw4_sync_d <= sw4_sync;
         end
     end
 
@@ -141,6 +192,21 @@ module digital_clock #(
             auto_page_sel <= 1'b0;
             auto_elapsed <= {AUTO_PHASE_W{1'b0}};
             auto_sec_count <= {SEC_COUNT_W{1'b0}};
+            stopwatch_tick_count <= {CENTISECOND_COUNT_W{1'b0}};
+            countdown_tick_count <= {CENTISECOND_COUNT_W{1'b0}};
+            stopwatch_second <= 6'd0;
+            stopwatch_centisecond <= 7'd0;
+            stopwatch_running <= 1'b0;
+            countdown_set_minute <= 6'd0;
+            countdown_set_second <= 6'd0;
+            countdown_minute <= 6'd0;
+            countdown_second <= 6'd0;
+            countdown_centisecond <= 7'd0;
+            countdown_running <= 1'b0;
+            countdown_done <= 1'b0;
+            countdown_started <= 1'b0;
+            alarm_blink_count <= {ALARM_BLINK_COUNT_W{1'b0}};
+            alarm_blink_phase <= 1'b0;
         end else begin
             if (sw2_sync == 1'b0) begin
                 auto_page_sel <= 1'b0;
@@ -150,7 +216,7 @@ module digital_clock #(
                 auto_page_sel <= 1'b0;
                 auto_elapsed <= {AUTO_PHASE_W{1'b0}};
                 auto_sec_count <= {SEC_COUNT_W{1'b0}};
-            end else if (sw0_sync == 1'b0) begin
+            end else if (sw3_sync == 1'b0 && sw0_sync == 1'b0) begin
                 if (auto_sec_count == CLK_FREQ_HZ - 1) begin
                     auto_sec_count <= {SEC_COUNT_W{1'b0}};
                     if (auto_page_sel == 1'b0) begin
@@ -167,10 +233,167 @@ module digital_clock #(
                 end else auto_sec_count <= auto_sec_count + 1'b1;
             end else auto_sec_count <= {SEC_COUNT_W{1'b0}};
 
+            if (stopwatch_mode) begin
+                if (key_rise[3] == 1'b1) begin
+                    stopwatch_second <= 6'd0;
+                    stopwatch_centisecond <= 7'd0;
+                    stopwatch_tick_count <= {CENTISECOND_COUNT_W{1'b0}};
+                    stopwatch_running <= 1'b0;
+                end else if (key_rise[2] == 1'b1) begin
+                    stopwatch_running <= ~stopwatch_running;
+                    stopwatch_tick_count <= {CENTISECOND_COUNT_W{1'b0}};
+                end else if (stopwatch_running == 1'b1) begin
+                    if (stopwatch_tick_count == CENTISECOND_LIMIT - 1) begin
+                        stopwatch_tick_count <= {CENTISECOND_COUNT_W{1'b0}};
+                        if (stopwatch_centisecond == 7'd99) begin
+                            stopwatch_centisecond <= 7'd0;
+                            if (stopwatch_second == 6'd59) stopwatch_second <= 6'd0;
+                            else stopwatch_second <= stopwatch_second + 1'b1;
+                        end else stopwatch_centisecond <= stopwatch_centisecond + 1'b1;
+                    end else stopwatch_tick_count <= stopwatch_tick_count + 1'b1;
+                end else begin
+                    stopwatch_tick_count <= {CENTISECOND_COUNT_W{1'b0}};
+                end
+            end else begin
+                stopwatch_running <= 1'b0;
+                stopwatch_tick_count <= {CENTISECOND_COUNT_W{1'b0}};
+            end
+
+            if (countdown_mode) begin
+                if (key_rise[3] == 1'b1) begin
+                    countdown_minute <= countdown_set_minute;
+                    countdown_second <= countdown_set_second;
+                    countdown_centisecond <= 7'd0;
+                    countdown_tick_count <= {CENTISECOND_COUNT_W{1'b0}};
+                    countdown_running <= 1'b0;
+                    countdown_done <= 1'b0;
+                    countdown_started <= 1'b0;
+                    alarm_blink_count <= {ALARM_BLINK_COUNT_W{1'b0}};
+                    alarm_blink_phase <= 1'b0;
+                end else if (countdown_running == 1'b1 && key_rise[2] == 1'b1) begin
+                    countdown_running <= 1'b0;
+                    countdown_tick_count <= {CENTISECOND_COUNT_W{1'b0}};
+                end else if (countdown_running == 1'b0 && key_rise[0] == 1'b1) begin
+                    countdown_done <= 1'b0;
+                    countdown_centisecond <= 7'd0;
+                    countdown_started <= 1'b0;
+                    alarm_blink_count <= {ALARM_BLINK_COUNT_W{1'b0}};
+                    alarm_blink_phase <= 1'b0;
+                    if (sw1_sync == 1'b0) begin
+                        if (countdown_set_minute == 6'd59) begin
+                            countdown_set_minute <= 6'd0;
+                            countdown_minute <= 6'd0;
+                        end else begin
+                            countdown_set_minute <= countdown_set_minute + 1'b1;
+                            countdown_minute <= countdown_set_minute + 1'b1;
+                        end
+                        countdown_second <= countdown_set_second;
+                    end else begin
+                        if (countdown_set_second == 6'd59) begin
+                            countdown_set_second <= 6'd0;
+                            countdown_second <= 6'd0;
+                        end else begin
+                            countdown_set_second <= countdown_set_second + 1'b1;
+                            countdown_second <= countdown_set_second + 1'b1;
+                        end
+                        countdown_minute <= countdown_set_minute;
+                    end
+                end else if (countdown_running == 1'b0 && key_rise[1] == 1'b1) begin
+                    countdown_done <= 1'b0;
+                    countdown_centisecond <= 7'd0;
+                    countdown_started <= 1'b0;
+                    alarm_blink_count <= {ALARM_BLINK_COUNT_W{1'b0}};
+                    alarm_blink_phase <= 1'b0;
+                    if (sw1_sync == 1'b0) begin
+                        if (countdown_set_minute == 6'd0) begin
+                            countdown_set_minute <= 6'd59;
+                            countdown_minute <= 6'd59;
+                        end else begin
+                            countdown_set_minute <= countdown_set_minute - 1'b1;
+                            countdown_minute <= countdown_set_minute - 1'b1;
+                        end
+                        countdown_second <= countdown_set_second;
+                    end else begin
+                        if (countdown_set_second == 6'd0) begin
+                            countdown_set_second <= 6'd59;
+                            countdown_second <= 6'd59;
+                        end else begin
+                            countdown_set_second <= countdown_set_second - 1'b1;
+                            countdown_second <= countdown_set_second - 1'b1;
+                        end
+                        countdown_minute <= countdown_set_minute;
+                    end
+                end else if (countdown_running == 1'b0 && key_rise[2] == 1'b1 && countdown_done == 1'b0) begin
+                    if (!countdown_started && countdown_set_minute == 6'd0 && countdown_set_second == 6'd0) begin
+                        countdown_done <= 1'b1;
+                        countdown_running <= 1'b0;
+                        alarm_blink_count <= {ALARM_BLINK_COUNT_W{1'b0}};
+                        alarm_blink_phase <= 1'b0;
+                    end else begin
+                        if (!countdown_started) begin
+                            countdown_minute <= countdown_set_minute;
+                            countdown_second <= countdown_set_second;
+                            countdown_centisecond <= 7'd0;
+                        end
+                        countdown_started <= 1'b1;
+                        countdown_running <= 1'b1;
+                        countdown_tick_count <= {CENTISECOND_COUNT_W{1'b0}};
+                    end
+                end else if (countdown_running == 1'b1) begin
+                    if (countdown_tick_count == CENTISECOND_LIMIT - 1) begin
+                        countdown_tick_count <= {CENTISECOND_COUNT_W{1'b0}};
+                        if (countdown_centisecond != 7'd0) begin
+                            if (countdown_centisecond == 7'd1 && countdown_second == 6'd0 && countdown_minute == 6'd0) begin
+                                countdown_centisecond <= 7'd0;
+                                countdown_running <= 1'b0;
+                                countdown_done <= 1'b1;
+                                alarm_blink_count <= {ALARM_BLINK_COUNT_W{1'b0}};
+                                alarm_blink_phase <= 1'b0;
+                            end else begin
+                                countdown_centisecond <= countdown_centisecond - 1'b1;
+                            end
+                        end else if (countdown_second != 6'd0) begin
+                            countdown_centisecond <= 7'd99;
+                            countdown_second <= countdown_second - 1'b1;
+                        end else if (countdown_minute != 6'd0) begin
+                            countdown_centisecond <= 7'd99;
+                            countdown_second <= 6'd59;
+                            countdown_minute <= countdown_minute - 1'b1;
+                        end else begin
+                            countdown_running <= 1'b0;
+                            countdown_done <= 1'b1;
+                            countdown_centisecond <= 7'd0;
+                        end
+                    end else begin
+                        countdown_tick_count <= countdown_tick_count + 1'b1;
+                    end
+                end else begin
+                    countdown_tick_count <= {CENTISECOND_COUNT_W{1'b0}};
+                end
+            end else begin
+                countdown_running <= 1'b0;
+                countdown_tick_count <= {CENTISECOND_COUNT_W{1'b0}};
+            end
+
+            if (!countdown_mode || key_rise[3] == 1'b1 || key_rise[0] == 1'b1 || key_rise[1] == 1'b1) begin
+                alarm_blink_count <= {ALARM_BLINK_COUNT_W{1'b0}};
+                alarm_blink_phase <= 1'b0;
+            end else if (countdown_done) begin
+                if (alarm_blink_count == ALARM_BLINK_LIMIT - 1) begin
+                    alarm_blink_count <= {ALARM_BLINK_COUNT_W{1'b0}};
+                    alarm_blink_phase <= ~alarm_blink_phase;
+                end else begin
+                    alarm_blink_count <= alarm_blink_count + 1'b1;
+                end
+            end
+
+
             if (sw0_sync == 1'b0) begin
-                if (sw2_sync == 1'b0) begin
-                    if (key_rise[2] == 1'b1) manual_page_sel <= 1'b0;
-                    else if (key_rise[3] == 1'b1) manual_page_sel <= 1'b1;
+                if (sw3_sync == 1'b0) begin
+                    if (sw2_sync == 1'b0) begin
+                        if (key_rise[2] == 1'b1) manual_page_sel <= 1'b0;
+                        else if (key_rise[3] == 1'b1) manual_page_sel <= 1'b1;
+                    end
                 end
 
                 if (sec_count == CLK_FREQ_HZ - 1) begin
@@ -186,21 +409,23 @@ module digital_clock #(
                 end else sec_count <= sec_count + 1'b1;
             end else begin
                 sec_count <= {SEC_COUNT_W{1'b0}};
-                if (key_rise[0] == 1'b1) begin
-                    if (sw1_sync == 1'b0) begin
-                        if (hour == 5'd23) hour <= 5'd0;
-                        else hour <= hour + 1'b1;
-                    end else begin
-                        if (minute == 6'd59) minute <= 6'd0;
-                        else minute <= minute + 1'b1;
-                    end
-                end else if (key_rise[1] == 1'b1) begin
-                    if (sw1_sync == 1'b0) begin
-                        if (hour == 5'd0) hour <= 5'd23;
-                        else hour <= hour - 1'b1;
-                    end else begin
-                        if (minute == 6'd0) minute <= 6'd59;
-                        else minute <= minute - 1'b1;
+                if (sw3_sync == 1'b0) begin
+                    if (key_rise[0] == 1'b1) begin
+                        if (sw1_sync == 1'b0) begin
+                            if (hour == 5'd23) hour <= 5'd0;
+                            else hour <= hour + 1'b1;
+                        end else begin
+                            if (minute == 6'd59) minute <= 6'd0;
+                            else minute <= minute + 1'b1;
+                        end
+                    end else if (key_rise[1] == 1'b1) begin
+                        if (sw1_sync == 1'b0) begin
+                            if (hour == 5'd0) hour <= 5'd23;
+                            else hour <= hour - 1'b1;
+                        end else begin
+                            if (minute == 6'd0) minute <= 6'd59;
+                            else minute <= minute - 1'b1;
+                        end
                     end
                 end
             end
@@ -225,33 +450,31 @@ module digital_clock #(
         an = 4'b1111;
         digit = 4'd0;
         dp_on = 1'b0;
-        case (scan_sel)
-            2'd0: begin
-                an = 4'b1110;
-                digit = display_page ? second % 10 : minute % 10;
-                dp_on = display_page;
-            end
-            2'd1: begin
-                an = 4'b1101;
-                digit = display_page ? second / 10 : minute / 10;
-                dp_on = 1'b0;
-            end
-            2'd2: begin
-                an = 4'b1011;
-                digit = display_page ? minute % 10 : hour % 10;
-                dp_on = display_page ? 1'b1 : colon_blink;
-            end
-            2'd3: begin
-                an = 4'b0111;
-                digit = display_page ? minute / 10 : hour / 10;
-                dp_on = 1'b0;
-            end
-            default: begin
-                an = 4'b1111;
-                digit = 4'd0;
-                dp_on = 1'b0;
-            end
-        endcase
+        if (stopwatch_mode) begin
+            case (scan_sel)
+                2'd0: begin an = 4'b1110; digit = stopwatch_centisecond % 10; end
+                2'd1: begin an = 4'b1101; digit = stopwatch_centisecond / 10; end
+                2'd2: begin an = 4'b1011; digit = stopwatch_second % 10; dp_on = 1'b1; end
+                2'd3: begin an = 4'b0111; digit = stopwatch_second / 10; end
+                default: begin an = 4'b1111; digit = 4'd0; dp_on = 1'b0; end
+            endcase
+        end else if (countdown_mode) begin
+            case (scan_sel)
+                2'd0: begin an = 4'b1110; digit = countdown_second % 10; dp_on = 1'b1; end
+                2'd1: begin an = 4'b1101; digit = countdown_second / 10; end
+                2'd2: begin an = 4'b1011; digit = countdown_minute % 10; dp_on = 1'b1; end
+                2'd3: begin an = 4'b0111; digit = countdown_minute / 10; end
+                default: begin an = 4'b1111; digit = 4'd0; dp_on = 1'b0; end
+            endcase
+        end else begin
+            case (scan_sel)
+                2'd0: begin an = 4'b1110; digit = display_page ? second % 10 : minute % 10; dp_on = display_page; end
+                2'd1: begin an = 4'b1101; digit = display_page ? second / 10 : minute / 10; dp_on = 1'b0; end
+                2'd2: begin an = 4'b1011; digit = display_page ? minute % 10 : hour % 10; dp_on = display_page ? 1'b1 : colon_blink; end
+                2'd3: begin an = 4'b0111; digit = display_page ? minute / 10 : hour / 10; dp_on = 1'b0; end
+                default: begin an = 4'b1111; digit = 4'd0; dp_on = 1'b0; end
+            endcase
+        end
         seg[7] = ~dp_on;
         case (digit)
             4'd0: seg[6:0] = 7'b0000001;
@@ -271,6 +494,8 @@ module digital_clock #(
     always @(*) begin
         ld0 = sw0_sync;
         ld1 = display_page;
+        ld7 = countdown_mode && countdown_done && !alarm_blink_phase;
+        ld8 = countdown_mode && countdown_done && alarm_blink_phase;
     end
 
 endmodule

@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-| Date         : Tue Nov  3 01:15:51 2026
+| Date         : Wed Nov  4 15:31:12 2026
 | Host         : EndsLikeNeighbours running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file digital_clock_control_sets_placed.rpt
 | Design       : digital_clock
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Number of unique control sets                            |    11 |
-| Unused register locations in slices containing registers |    41 |
+| Number of unique control sets                            |    20 |
+| Unused register locations in slices containing registers |    67 |
 +----------------------------------------------------------+-------+
 
 
@@ -34,10 +34,13 @@ Table of Contents
 +--------+--------------+
 | Fanout | Control Sets |
 +--------+--------------+
+|      4 |            1 |
 |      5 |            1 |
-|      6 |            2 |
+|      6 |            5 |
 |      7 |            1 |
-|    16+ |            7 |
+|     12 |            1 |
+|     15 |            1 |
+|    16+ |           10 |
 +--------+--------------+
 
 
@@ -47,32 +50,41 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               7 |            4 |
+| No           | No                    | No                     |              15 |            8 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |             175 |           52 |
-| Yes          | No                    | No                     |               0 |            0 |
+| No           | Yes                   | No                     |             199 |           53 |
+| Yes          | No                    | No                     |               6 |            6 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              17 |            9 |
+| Yes          | Yes                   | No                     |              97 |           41 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------+-------------------+----------------------------+------------------+----------------+
-|  Clock Signal  |   Enable Signal   |      Set/Reset Signal      | Slice Load Count | Bel Load Count |
-+----------------+-------------------+----------------------------+------------------+----------------+
-|  clk_IBUF_BUFG | hour[4]_i_1_n_0   | btnc_sync                  |                2 |              5 |
-|  clk_IBUF_BUFG | minute[5]_i_1_n_0 | btnc_sync                  |                5 |              6 |
-|  clk_IBUF_BUFG | second            | btnc_sync                  |                2 |              6 |
-|  clk_IBUF_BUFG |                   |                            |                4 |              7 |
-|  clk_IBUF_BUFG |                   | db_count[3][0]_i_1_n_0     |                5 |             20 |
-|  clk_IBUF_BUFG |                   | db_count[0][0]_i_1_n_0     |                5 |             20 |
-|  clk_IBUF_BUFG |                   | db_count[1][0]_i_1_n_0     |                5 |             20 |
-|  clk_IBUF_BUFG |                   | db_count[2][0]_i_1_n_0     |                5 |             20 |
-|  clk_IBUF_BUFG |                   | auto_sec_count[26]_i_1_n_0 |                7 |             27 |
-|  clk_IBUF_BUFG |                   | sec_count[0]_i_1_n_0       |                7 |             27 |
-|  clk_IBUF_BUFG |                   | btnc_sync                  |               18 |             41 |
-+----------------+-------------------+----------------------------+------------------+----------------+
++----------------+----------------------------------+----------------------------------+------------------+----------------+
+|  Clock Signal  |           Enable Signal          |         Set/Reset Signal         | Slice Load Count | Bel Load Count |
++----------------+----------------------------------+----------------------------------+------------------+----------------+
+|  clk_IBUF_BUFG | countdown_centisecond[6]_i_2_n_0 | countdown_centisecond[6]_i_1_n_0 |                2 |              4 |
+|  clk_IBUF_BUFG | hour[4]_i_1_n_0                  | btnc_sync                        |                1 |              5 |
+|  clk_IBUF_BUFG | countdown_minute[5]_i_1_n_0      | btnc_sync                        |                6 |              6 |
+|  clk_IBUF_BUFG | countdown_second[5]_i_1_n_0      |                                  |                6 |              6 |
+|  clk_IBUF_BUFG | minute[5]_i_1_n_0                | btnc_sync                        |                4 |              6 |
+|  clk_IBUF_BUFG | second                           | btnc_sync                        |                3 |              6 |
+|  clk_IBUF_BUFG | stopwatch_second[5]_i_1_n_0      | stopwatch_centisecond[6]_i_1_n_0 |                2 |              6 |
+|  clk_IBUF_BUFG | stopwatch_centisecond[6]_i_2_n_0 | stopwatch_centisecond[6]_i_1_n_0 |                3 |              7 |
+|  clk_IBUF_BUFG | countdown_set_second[5]_i_1_n_0  | btnc_sync                        |                6 |             12 |
+|  clk_IBUF_BUFG |                                  |                                  |                8 |             15 |
+|  clk_IBUF_BUFG |                                  | db_count[0][0]_i_1_n_0           |                5 |             20 |
+|  clk_IBUF_BUFG |                                  | db_count[1][0]_i_1_n_0           |                5 |             20 |
+|  clk_IBUF_BUFG |                                  | db_count[2][0]_i_1_n_0           |                5 |             20 |
+|  clk_IBUF_BUFG |                                  | db_count[3][0]_i_1_n_0           |                5 |             20 |
+|  clk_IBUF_BUFG |                                  | stopwatch_tick_count[19]_i_1_n_0 |                6 |             20 |
+|  clk_IBUF_BUFG | countdown_tick_count[19]_i_2_n_0 | countdown_tick_count[19]_i_1_n_0 |                8 |             20 |
+|  clk_IBUF_BUFG | countdown_done_reg_n_0           | alarm_blink_count[24]_i_1_n_0    |                6 |             25 |
+|  clk_IBUF_BUFG |                                  | auto_sec_count[26]_i_1_n_0       |                6 |             27 |
+|  clk_IBUF_BUFG |                                  | sec_count[0]_i_1_n_0             |                7 |             27 |
+|  clk_IBUF_BUFG |                                  | btnc_sync                        |               14 |             45 |
++----------------+----------------------------------+----------------------------------+------------------+----------------+
 
 

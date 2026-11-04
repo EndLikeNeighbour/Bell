@@ -9,44 +9,44 @@ z2
 cModel Technology
 dG:/
 vdigital_clock
-Z0 !s110 1793670197
+Z0 !s110 1793773328
 !i10b 1
-!s100 G_DOoT?ENdLCLXdn3zjU03
-I2TnC8E1:U;<>8D8cbhW541
+!s100 >okBg:lE8id>o2SQ>a=oK0
+Ic05ddYz0RMjhMF<bGAW>:2
 Z1 VDg1SIo80bB@j0V0VzS_@n1
-dG:/
-w1793639339
+Z2 dE:/Project/ModelsimProject/Bell
+w1793773240
 8rtl/digital_clock.v
 Frtl/digital_clock.v
 L0 7
-Z2 OP;L;10.6c;65
+Z3 OP;L;10.6c;65
 r1
 !s85 0
 31
-Z3 !s108 1793670197.000000
+Z4 !s108 1793773328.000000
 !s107 sim/tb_digital_clock.v|rtl/digital_clock.v|
-Z4 !s90 -work|work|rtl/digital_clock.v|sim/tb_digital_clock.v|
+Z5 !s90 -work|work|rtl/digital_clock.v|sim/tb_digital_clock.v|
 !i113 1
-Z5 o-work work
-Z6 tCvgOpt 0
+Z6 o-work work
+Z7 tCvgOpt 0
 vtb_digital_clock
 R0
 !i10b 1
-!s100 `b]8nK@3[=8KZ8OhOi4lV0
-I2fbMf4iPFI7je[[SVhBj13
+!s100 jM;C7GC3O<kL>GRmV8^JB0
+IAMBnhVR_?>zCbiQRe>XR62
 R1
-dG:/
-w1793639278
+R2
+w1793773097
 8sim/tb_digital_clock.v
 Fsim/tb_digital_clock.v
 L0 7
-R2
+R3
 r1
 !s85 0
 31
-R3
-Z7 !s107 sim/tb_digital_clock.v|rtl/digital_clock.v|
 R4
-!i113 1
+Z8 !s107 sim/tb_digital_clock.v|rtl/digital_clock.v|
 R5
+!i113 1
 R6
+R7

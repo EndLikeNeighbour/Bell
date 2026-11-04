@@ -1,0 +1,29 @@
+# ModelSim generated libraries and waveforms
+/sim_work/
+/work/
+/transcript
+*.wlf
+*.vcd
+
+# Vivado generated project state
+/vivado_project/*.cache/
+/vivado_project/*.runs/
+/vivado_project/*.sim/
+/vivado_project/*.hw/
+/vivado_project/*.ip_user_files/
+/vivado_project/.Xil/
+
+# Vivado build outputs
+/vivado_project/*.bit
+/vivado_project/*.bin
+/vivado_project/*.mcs
+/vivado_project/*.prm
+/vivado_project/*.dcp
+/vivado_project/*.rpt
+/vivado_project/*.rpx
+/vivado_project/*.pb
+
+# Tool logs and journals
+*.jou
+*.log
+*.str

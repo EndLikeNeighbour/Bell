@@ -1,17 +1,17 @@
 # vlog -work work rtl/digital_clock.v sim/tb_digital_clock.v
 # Model Technology ModelSim DE-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
-# Start time: 09:43:17 on Nov 03,2026
+# Start time: 14:22:08 on Nov 04,2026
 # vlog -work work rtl/digital_clock.v sim/tb_digital_clock.v 
 # -- Compiling module digital_clock
 # -- Compiling module tb_digital_clock
 # 
 # Top level modules:
 # 	tb_digital_clock
-# End time: 09:43:17 on Nov 03,2026, Elapsed time: 0:00:00
+# End time: 14:22:08 on Nov 04,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -onfinish stop work.tb_digital_clock
 # vsim -onfinish stop work.tb_digital_clock 
-# Start time: 09:43:18 on Nov 03,2026
+# Start time: 14:22:08 on Nov 04,2026
 # //  ModelSim DE-64 10.6c Jul 26 2017
 # //
 # //  Copyright 1991-2017 Mentor Graphics Corporation
@@ -52,6 +52,23 @@
 # PASS auto switch MM:SS -> HH:MM at 3 s
 # PASS manual page restore after SW2 off
 # PASS manual left page selection after auto mode
+# PASS wall clock runs in timer mode
+# PASS timer buttons isolated from wall clock
+# PASS stopwatch reset state
+# PASS stopwatch centisecond increment
+# PASS stopwatch pause hold
+# PASS stopwatch reset button
+# PASS stopwatch 59.99 rollover
+# PASS countdown seconds increment
+# PASS countdown start
+# PASS countdown pause hold
+# PASS countdown resumes remaining value
+# PASS countdown terminal tick
+# PASS countdown initial alarm LED phase
+# PASS countdown alternating alarm LED phase
+# PASS countdown reset/reload
+# PASS countdown seconds decrement wrap
+# PASS countdown controls isolated from wall clock
 # PASS time  0: 0: 0
 # PASS time 23: 0: 0
 # PASS time  0: 0: 0
@@ -67,11 +84,11 @@
 # PASS time  1: 0: 0
 # PASS time  0: 0: 0
 # ----------------------------------------
-# ALL TESTS PASSED (37 checks)
-# ** Note: $finish    : sim/tb_digital_clock.v(358)
-#    Time: 3526 ns  Iteration: 0  Instance: /tb_digital_clock
-# Break in Module tb_digital_clock at sim/tb_digital_clock.v line 358
-# Stopped at sim/tb_digital_clock.v line 358
+# ALL TESTS PASSED (54 checks)
+# ** Note: $finish    : sim/tb_digital_clock.v(560)
+#    Time: 6386 ns  Iteration: 0  Instance: /tb_digital_clock
+# Break in Module tb_digital_clock at sim/tb_digital_clock.v line 560
+# Stopped at sim/tb_digital_clock.v line 560
 # set error_count [examine -radix decimal sim:/tb_digital_clock/errors]
 # 0
 # if {$error_count != 0} {
@@ -81,5 +98,5 @@
 #     puts "MODELSIM RESULT: PASS"
 #     quit -code 0
 # }
-# End time: 09:43:18 on Nov 03,2026, Elapsed time: 0:00:00
+# End time: 14:22:09 on Nov 04,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0

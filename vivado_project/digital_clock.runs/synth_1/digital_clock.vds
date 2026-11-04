@@ -2,8 +2,8 @@
 # Vivado v2018.1 (64-bit)
 # SW Build 2188600 on Wed Apr  4 18:40:38 MDT 2018
 # IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
-# Start of session at: Tue Nov  3 01:14:42 2026
-# Process ID: 4800
+# Start of session at: Wed Nov  4 15:28:49 2026
+# Process ID: 4228
 # Current directory: E:/Project/ModelsimProject/Bell/vivado_project/digital_clock.runs/synth_1
 # Command line: vivado.exe -log digital_clock.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source digital_clock.tcl
 # Log file: E:/Project/ModelsimProject/Bell/vivado_project/digital_clock.runs/synth_1/digital_clock.vds
@@ -15,9 +15,9 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 32360 
+INFO: Helper process launched with PID 24348 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 408.469 ; gain = 96.184
+Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 409.312 ; gain = 96.613
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'digital_clock' [E:/Project/ModelsimProject/Bell/rtl/digital_clock.v:7]
 	Parameter CLK_FREQ_HZ bound to: 100000000 - type: integer 
@@ -25,8 +25,12 @@ INFO: [Synth 8-6157] synthesizing module 'digital_clock' [E:/Project/ModelsimPro
 	Parameter SCAN_DIV bound to: 25000 - type: integer 
 	Parameter AUTO_HH_SECONDS bound to: 5 - type: integer 
 	Parameter AUTO_MM_SECONDS bound to: 3 - type: integer 
+	Parameter CENTISECOND_CYCLES bound to: 1000000 - type: integer 
+	Parameter ALARM_BLINK_CYCLES bound to: 25000000 - type: integer 
 	Parameter DB_LIMIT bound to: 1000000 - type: integer 
 	Parameter SCAN_LIMIT bound to: 25000 - type: integer 
+	Parameter CENTISECOND_LIMIT bound to: 1000000 - type: integer 
+	Parameter ALARM_BLINK_LIMIT bound to: 25000000 - type: integer 
 	Parameter AUTO_HH_LIMIT bound to: 5 - type: integer 
 	Parameter AUTO_MM_LIMIT bound to: 3 - type: integer 
 	Parameter AUTO_PHASE_MAX bound to: 5 - type: integer 
@@ -34,10 +38,16 @@ INFO: [Synth 8-6157] synthesizing module 'digital_clock' [E:/Project/ModelsimPro
 	Parameter SEC_COUNT_W bound to: 27 - type: integer 
 	Parameter DB_COUNT_W bound to: 20 - type: integer 
 	Parameter SCAN_COUNT_W bound to: 15 - type: integer 
-INFO: [Synth 8-226] default block is never used [E:/Project/ModelsimProject/Bell/rtl/digital_clock.v:228]
+	Parameter CENTISECOND_COUNT_W bound to: 20 - type: integer 
+	Parameter ALARM_BLINK_COUNT_W bound to: 25 - type: integer 
+INFO: [Synth 8-226] default block is never used [E:/Project/ModelsimProject/Bell/rtl/digital_clock.v:454]
+INFO: [Synth 8-226] default block is never used [E:/Project/ModelsimProject/Bell/rtl/digital_clock.v:462]
+INFO: [Synth 8-226] default block is never used [E:/Project/ModelsimProject/Bell/rtl/digital_clock.v:470]
+WARNING: [Synth 8-6014] Unused sequential element sw3_sync_d_reg was removed.  [E:/Project/ModelsimProject/Bell/rtl/digital_clock.v:132]
+WARNING: [Synth 8-6014] Unused sequential element sw4_sync_d_reg was removed.  [E:/Project/ModelsimProject/Bell/rtl/digital_clock.v:133]
 INFO: [Synth 8-6155] done synthesizing module 'digital_clock' (1#1) [E:/Project/ModelsimProject/Bell/rtl/digital_clock.v:7]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 464.547 ; gain = 152.262
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 465.023 ; gain = 152.324
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -50,10 +60,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 464.547 ; gain = 152.262
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 465.023 ; gain = 152.324
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 464.547 ; gain = 152.262
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 465.023 ; gain = 152.324
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -69,22 +79,22 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 807.152 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 811.594 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 807.152 ; gain = 494.867
+Finished Constraint Validation : Time (s): cpu = 00:00:30 ; elapsed = 00:00:37 . Memory (MB): peak = 811.594 ; gain = 498.895
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 807.152 ; gain = 494.867
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:30 ; elapsed = 00:00:37 . Memory (MB): peak = 811.594 ; gain = 498.895
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 807.152 ; gain = 494.867
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:30 ; elapsed = 00:00:37 . Memory (MB): peak = 811.594 ; gain = 498.895
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5545] ROM "second" won't be mapped to RAM because address size (27) is larger than maximum supported(25)
 INFO: [Synth 8-5546] ROM "minute" won't be mapped to RAM because it is too sparse
@@ -92,9 +102,12 @@ INFO: [Synth 8-5546] ROM "hour" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5544] ROM "auto_page_sel" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "auto_page_sel" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5545] ROM "auto_elapsed" won't be mapped to RAM because address size (27) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "stopwatch_second" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "stopwatch_centisecond" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "countdown_centisecond" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "scan_sel" won't be mapped to RAM because it is too sparse
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 807.152 ; gain = 494.867
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:31 ; elapsed = 00:00:38 . Memory (MB): peak = 811.594 ; gain = 498.895
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -108,30 +121,40 @@ Start RTL Component Statistics
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input     27 Bit       Adders := 2     
+	   2 Input     25 Bit       Adders := 1     
+	   2 Input     20 Bit       Adders := 2     
 	   2 Input     15 Bit       Adders := 1     
-	   2 Input      6 Bit       Adders := 3     
+	   2 Input      7 Bit       Adders := 2     
+	   2 Input      6 Bit       Adders := 10    
 	   2 Input      5 Bit       Adders := 2     
 	   2 Input      3 Bit       Adders := 1     
 	   2 Input      2 Bit       Adders := 1     
 +---Registers : 
 	               27 Bit    Registers := 2     
+	               25 Bit    Registers := 1     
+	               20 Bit    Registers := 2     
 	               15 Bit    Registers := 1     
-	                6 Bit    Registers := 2     
+	                7 Bit    Registers := 2     
+	                6 Bit    Registers := 7     
 	                5 Bit    Registers := 1     
 	                4 Bit    Registers := 4     
 	                3 Bit    Registers := 1     
 	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 11    
+	                1 Bit    Registers := 20    
 +---Muxes : 
 	   2 Input     27 Bit        Muxes := 2     
+	   2 Input     25 Bit        Muxes := 1     
+	   2 Input     20 Bit        Muxes := 2     
 	   2 Input     15 Bit        Muxes := 1     
-	   2 Input      6 Bit        Muxes := 5     
+	   2 Input      7 Bit        Muxes := 9     
+	   4 Input      7 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 30    
 	   2 Input      5 Bit        Muxes := 4     
-	   4 Input      4 Bit        Muxes := 2     
-	   2 Input      4 Bit        Muxes := 2     
+	   4 Input      4 Bit        Muxes := 4     
+	   2 Input      4 Bit        Muxes := 4     
 	   2 Input      3 Bit        Muxes := 5     
-	   2 Input      1 Bit        Muxes := 40    
-	   4 Input      1 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 98    
+	   4 Input      1 Bit        Muxes := 4     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -143,30 +166,40 @@ Module digital_clock
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input     27 Bit       Adders := 2     
+	   2 Input     25 Bit       Adders := 1     
+	   2 Input     20 Bit       Adders := 2     
 	   2 Input     15 Bit       Adders := 1     
-	   2 Input      6 Bit       Adders := 3     
+	   2 Input      7 Bit       Adders := 2     
+	   2 Input      6 Bit       Adders := 10    
 	   2 Input      5 Bit       Adders := 2     
 	   2 Input      3 Bit       Adders := 1     
 	   2 Input      2 Bit       Adders := 1     
 +---Registers : 
 	               27 Bit    Registers := 2     
+	               25 Bit    Registers := 1     
+	               20 Bit    Registers := 2     
 	               15 Bit    Registers := 1     
-	                6 Bit    Registers := 2     
+	                7 Bit    Registers := 2     
+	                6 Bit    Registers := 7     
 	                5 Bit    Registers := 1     
 	                4 Bit    Registers := 4     
 	                3 Bit    Registers := 1     
 	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 11    
+	                1 Bit    Registers := 20    
 +---Muxes : 
 	   2 Input     27 Bit        Muxes := 2     
+	   2 Input     25 Bit        Muxes := 1     
+	   2 Input     20 Bit        Muxes := 2     
 	   2 Input     15 Bit        Muxes := 1     
-	   2 Input      6 Bit        Muxes := 5     
+	   2 Input      7 Bit        Muxes := 9     
+	   4 Input      7 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 30    
 	   2 Input      5 Bit        Muxes := 4     
-	   4 Input      4 Bit        Muxes := 2     
-	   2 Input      4 Bit        Muxes := 2     
+	   4 Input      4 Bit        Muxes := 4     
+	   2 Input      4 Bit        Muxes := 4     
 	   2 Input      3 Bit        Muxes := 5     
-	   2 Input      1 Bit        Muxes := 40    
-	   4 Input      1 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 98    
+	   4 Input      1 Bit        Muxes := 4     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -185,8 +218,11 @@ Start Cross Boundary and Area Optimization
 Warning: Parallel synthesis criteria is not met 
 INFO: [Synth 8-5546] ROM "scan_sel" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "auto_elapsed" won't be mapped to RAM because address size (27) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "countdown_centisecond" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "stopwatch_centisecond" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "stopwatch_second" won't be mapped to RAM because it is too sparse
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 807.152 ; gain = 494.867
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:42 . Memory (MB): peak = 811.594 ; gain = 498.895
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -198,13 +234,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:22 . Memory (MB): peak = 807.152 ; gain = 494.867
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:49 ; elapsed = 00:00:59 . Memory (MB): peak = 811.594 ; gain = 498.895
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:22 . Memory (MB): peak = 835.219 ; gain = 522.934
+Finished Timing Optimization : Time (s): cpu = 00:00:52 ; elapsed = 00:01:03 . Memory (MB): peak = 857.211 ; gain = 544.512
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -216,7 +252,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:18 ; elapsed = 00:00:22 . Memory (MB): peak = 843.637 ; gain = 531.352
+Finished Technology Mapping : Time (s): cpu = 00:00:52 ; elapsed = 00:01:03 . Memory (MB): peak = 860.324 ; gain = 547.625
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -240,7 +276,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 843.637 ; gain = 531.352
+Finished IO Insertion : Time (s): cpu = 00:00:53 ; elapsed = 00:01:04 . Memory (MB): peak = 860.324 ; gain = 547.625
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -253,7 +289,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 843.637 ; gain = 531.352
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:53 ; elapsed = 00:01:04 . Memory (MB): peak = 860.324 ; gain = 547.625
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -265,25 +301,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 843.637 ; gain = 531.352
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:53 ; elapsed = 00:01:04 . Memory (MB): peak = 860.324 ; gain = 547.625
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 843.637 ; gain = 531.352
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:53 ; elapsed = 00:01:04 . Memory (MB): peak = 860.324 ; gain = 547.625
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 843.637 ; gain = 531.352
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:53 ; elapsed = 00:01:05 . Memory (MB): peak = 860.324 ; gain = 547.625
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 843.637 ; gain = 531.352
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:53 ; elapsed = 00:01:05 . Memory (MB): peak = 860.324 ; gain = 547.625
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -300,32 +336,33 @@ Report Cell Usage:
 |      |Cell   |Count |
 +------+-------+------+
 |1     |BUFG   |     1|
-|2     |CARRY4 |    38|
-|3     |LUT1   |     9|
-|4     |LUT2   |    72|
-|5     |LUT3   |    25|
-|6     |LUT4   |    30|
-|7     |LUT5   |    26|
-|8     |LUT6   |    44|
-|9     |FDRE   |   198|
-|10    |IBUF   |     9|
-|11    |OBUF   |    14|
+|2     |CARRY4 |    54|
+|3     |LUT1   |    15|
+|4     |LUT2   |   151|
+|5     |LUT3   |    29|
+|6     |LUT4   |    64|
+|7     |LUT5   |    65|
+|8     |LUT6   |   147|
+|9     |MUXF7  |     6|
+|10    |FDRE   |   316|
+|11    |IBUF   |    11|
+|12    |OBUF   |    16|
 +------+-------+------+
 
 Report Instance Areas: 
 +------+---------+-------+------+
 |      |Instance |Module |Cells |
 +------+---------+-------+------+
-|1     |top      |       |   466|
+|1     |top      |       |   875|
 +------+---------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 843.637 ; gain = 531.352
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:53 ; elapsed = 00:01:05 . Memory (MB): peak = 860.324 ; gain = 547.625
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 843.637 ; gain = 188.746
-Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 843.637 ; gain = 531.352
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:35 ; elapsed = 00:00:50 . Memory (MB): peak = 860.324 ; gain = 201.055
+Synthesis Optimization Complete : Time (s): cpu = 00:00:54 ; elapsed = 00:01:05 . Memory (MB): peak = 860.324 ; gain = 547.625
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 47 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 71 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
@@ -333,10 +370,10 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-24 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+32 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:20 ; elapsed = 00:00:26 . Memory (MB): peak = 843.637 ; gain = 543.988
+synth_design: Time (s): cpu = 00:00:56 ; elapsed = 00:01:09 . Memory (MB): peak = 860.324 ; gain = 560.504
 INFO: [Common 17-1381] The checkpoint 'E:/Project/ModelsimProject/Bell/vivado_project/digital_clock.runs/synth_1/digital_clock.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file digital_clock_utilization_synth.rpt -pb digital_clock_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 843.637 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Tue Nov  3 01:15:14 2026...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.059 . Memory (MB): peak = 860.324 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Wed Nov  4 15:30:13 2026...
